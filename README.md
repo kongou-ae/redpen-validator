@@ -13,7 +13,7 @@ Javascript拡張を利用したRedPenのValidatorです。
 
 jtfStyleGuideValidator.jsの元ネタとなっているValidatorです。`terms`配列に登録されている表記の規則を利用して、文章に規則から外れた「ゆらぎ」が含まれているかを精査します。精査方法は正規表現と形態素解析の二つをサポートしています。
 
-### 正規表現
+### 正規表現による精査
 
 正規表現による精査を行う場合、Terms配列には以下のプロパティを持ったオブジェクトを登録してください。
 
@@ -42,7 +42,7 @@ tmp.md:39: ValidationError[JavaScript], [termsValidator.js] 文書規約違反(M
 tmp.md:41: ValidationError[JavaScript], [termsValidator.js] 文書規約違反(MyCompany)です。「ファイヤーウオール」を「ファイアウォール」に修正してください at line: ファイヤーウオール
 ```
 
-### 形態素解析
+### 形態素解析による精査
 
 形態素解析による精査を行う場合、Terms配列には以下のプロパティを持ったオブジェクトを登録してください。
 

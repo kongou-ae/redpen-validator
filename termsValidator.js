@@ -5,7 +5,7 @@ function validateSentence(sentence) {
     };
     */
     var terms = [
-        //　作者の好み
+        /*　サンプル
         {
             'expected':'ファイアウォール',
             'pattern':['ファイアーウォール','ファイヤーウォール','ファイヤウォール','ファイヤーウオール'],
@@ -36,7 +36,8 @@ function validateSentence(sentence) {
             'expected':'通信事業者',
             'pattern':['通信キャリア'],
             'source':'MyCompany'
-        },
+        }
+        */
     ];
 
     var morphologicalAnalysis = function(sentence){
