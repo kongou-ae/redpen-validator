@@ -5,9 +5,13 @@ Javascript拡張を利用したRedPenのValidatorです。
 ## jtfStyleGuideValidator.js
 
 [JTF 日本語標準スタイルガイド
-（翻訳用） ](http://www.jtf.jp/jp/style_guide/pdf/jtf_style_guide.pdf)のスタイルに準拠しているかどうかを精査します。現在対応している項目は「2.2.1. ひらがなと漢字の使い分け」の一部のみです。
+（翻訳用） ](http://www.jtf.jp/jp/style_guide/pdf/jtf_style_guide.pdf)のスタイルに準拠しているかどうかを精査します。現在対応している項目は以下のとおりです。
 
-「複数の表記方法が一般的で、実務文書で頻出する語」はひらがなが正しいとしています。
+- 2.2.1. ひらがなと漢字の使い分け（一部）
+    - 「複数の表記方法が一般的で、実務文書で頻出する語」はひらがなが正しいとしています
+- 2.2.2. 算用数字と漢数字の使い分け
+
+
 
 ## termsValidator.js
 
