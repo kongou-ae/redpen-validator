@@ -531,29 +531,27 @@ function validateSentence(sentence) {
 
     ];
 
-    var tokenCheckPerfectMatch = function (sentence){
+    var tokenCheck = function (sentence){
         for (var k = 0; k < sentence.tokens.length; k++) {
+            // 2.2.1
             if ( sentence.tokens[k].tags[0] == terms[i]['tokenCheck'][0] &&
                  sentence.tokens[k].tags[1] == terms[i]['tokenCheck'][1] &&　
                  sentence.tokens[k].tags[6] == terms[i]['tokenCheck'][2] ){
                 addError('【文書規約違反：' + terms[i]['source'] + '】　「' + sentence.tokens[k].surface + '」を修正してください。（正：' + terms[i]['expected'] + '　誤：' + terms[i]['pattern'][j] + '）' , sentence);
-            }
-        }
-    }
-
-    var tokenCheckRegularExpression = function (sentence){
-        for (var k = 0; k < sentence.tokens.length; k++) {
-            if (
-                 sentence.tokens[k].tags[0] == terms[i]['tokenCheck'][0] &&
-                 sentence.tokens[k].tags[1] == terms[i]['tokenCheck'][1] &&　
-                 sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2]))){
-
-                // 正規表現で引っかかってしまったものの中から、漢数字が正しい表現を除外する
-                if ( (k > 0 && sentence.tokens[k - 1].tags[6] == '数') ||
-                     (k < sentence.tokens.length - 2 && sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2])) && sentence.tokens[k+1].tags[6]=='次' && sentence.tokens[k+2].tags[6]=='関数') ||
-                     (k < sentence.tokens.length - 1 && sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2])) && sentence.tokens[k+1].tags[6]=='大陸')){
-                } else {
-                    addError('【文書規約違反：' + terms[i]['source'] + '】　「' + sentence.tokens[k].surface + '」を修正してください。数量を表現し、数を数えられるものは算用数字を使用します。（正：' + terms[i]['expected'] + '　誤：' + terms[i]['pattern'][j] + '）' , sentence);
+            } else {
+                // 2.2.2,2.2.3
+                if (
+                     sentence.tokens[k].tags[0] == terms[i]['tokenCheck'][0] &&
+                     sentence.tokens[k].tags[1] == terms[i]['tokenCheck'][1] &&　
+                     sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2]))
+                   ){
+                    // 正規表現で引っかかってしまったものの中から、漢数字が正しい表現を除外する
+                    if ( (k > 0 && sentence.tokens[k - 1].tags[6] == '数') ||
+                         (k < sentence.tokens.length - 2 && sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2])) && sentence.tokens[k+1].tags[6]=='次' && sentence.tokens[k+2].tags[6]=='関数') ||
+                         (k < sentence.tokens.length - 1 && sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2])) && sentence.tokens[k+1].tags[6]=='大陸')){
+                    } else {
+                        addError('【文書規約違反：' + terms[i]['source'] + '】　「' + sentence.tokens[k].surface + '」を修正してください。数量を表現し、数を数えられるものは算用数字を使用します。（正：' + terms[i]['expected'] + '　誤：' + terms[i]['pattern'][j] + '）' , sentence);
+                    }
                 }
             }
         }
@@ -564,8 +562,7 @@ function validateSentence(sentence) {
             var regex = new RegExp( terms[i]['pattern'][j]);
             // 形態素解析するかどうか
             if ( 'tokenCheck'　in terms[i] ) {
-                tokenCheckPerfectMatch(sentence);
-                tokenCheckRegularExpression(sentence);
+                tokenCheck(sentence);
             } else {
                 if ( sentence.content.match(regex) ) {
                     addError('【文書規約違反：' + terms[i]['source'] + '】　「' + terms[i]['pattern'][j] + '」を「' + terms[i]['expected'] + '」に修正してください', sentence);
