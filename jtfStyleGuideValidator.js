@@ -507,17 +507,44 @@ function validateSentence(sentence) {
             'expected':'わが',
             'pattern':['我が'],
             'source':'JTF-2.2.1'
+        },
+        // JTF-2.2.2. 算用数字と漢数字の使い分け()(算用数字を使う)
+        {
+            'expected':'1',
+            'pattern':['一'],
+            'tokenCheck':['名詞','数','[一二三四五六七八九十百千]'],　
+            'source':'JTF-2.2.2'
+        },
+        {
+            'expected':'1つ',
+            'pattern':['一つ'],
+            'tokenCheck':['名詞','一般','[一二三四五六七八九]つ'],　
+            'source':'JTF-2.2.2'
         }
+
     ];
 
     var morphologicalAnalysis = function(sentence){
         for (var k = 0; k < sentence.tokens.length; k++) {
+            // 2.2.1
             if ( sentence.tokens[k].tags[0] == terms[i]['tokenCheck'][0] &&
                  sentence.tokens[k].tags[1] == terms[i]['tokenCheck'][1] &&　
                  sentence.tokens[k].tags[6] == terms[i]['tokenCheck'][2] ){
-                addError('文書規約違反(' + terms[i]['source'] + ')です。「' + sentence.tokens[k].surface + '」を修正してください。（正：' + terms[i]['expected'] + '　誤：' + terms[i]['pattern'][j] + '）' , sentence);
+                addError('【文書規約違反：' + terms[i]['source'] + '】　「' + sentence.tokens[k].surface + '」を修正してください。（正：' + terms[i]['expected'] + '　誤：' + terms[i]['pattern'][j] + '）' , sentence);
+            // 2.2.2
+            } else if (
+                 sentence.tokens[k].tags[0] == terms[i]['tokenCheck'][0] &&
+                 sentence.tokens[k].tags[1] == terms[i]['tokenCheck'][1] &&　
+                 sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2]))){
+                // 正規表現で引っかかってしまったものの中から、漢数字が正しい表現を除外する
+                if ( (k != 0 && sentence.tokens[k - 1].tags[6] == '数') ||
+                     (sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2])) && sentence.tokens[k+1].tags[6]=='次' && sentence.tokens[k+2].tags[6]=='関数') ||
+                     (sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2])) && sentence.tokens[k+1].tags[6]=='大陸') ){
+                } else {
+                    addError('【文書規約違反：' + terms[i]['source'] + '】　「' + sentence.tokens[k].surface + '」を修正してください。数量を表現し、数を数えられるものは算用数字を使用します。（正：' + terms[i]['expected'] + '　誤：' + terms[i]['pattern'][j] + '）' , sentence);
+                }
             }
-        };
+        }
     }
 
     for ( var i = 0; i < terms.length; i++ ) {
@@ -527,7 +554,7 @@ function validateSentence(sentence) {
                 morphologicalAnalysis(sentence);
             } else {
                 if ( sentence.content.match(regex) ) {
-                    addError('文書規約違反(' + terms[i]['source'] + ')です。「' + terms[i]['pattern'][j] + '」を「' + terms[i]['expected'] + '」に修正してください', sentence);
+                    addError('【文書規約違反：' + terms[i]['source'] + '】　「' + terms[i]['pattern'][j] + '」を「' + terms[i]['expected'] + '」に修正してください', sentence);
                 }
             };
         };
