@@ -177,7 +177,7 @@ function validateSentence(sentence) {
         {
             'expected':'ように',
             'pattern':['様に'],
-            'tokenCheck':['名詞','非自立','様'],
+            'tokenCheck':['名詞','非自立','^様$'],
             'source':'JTF-2.2.1'
         },
         {
@@ -373,7 +373,7 @@ function validateSentence(sentence) {
         {
             'expected':'うえで',
             'pattern':['上で'],
-            'tokenCheck':['名詞','非自立','上'],　
+            'tokenCheck':['名詞','非自立','^上$'],　
             'source':'JTF-2.2.1'
         },
         {
@@ -399,7 +399,7 @@ function validateSentence(sentence) {
         {
             'expected':'ともに',
             'pattern':['共に'],
-            'tokenCheck':['副詞','一般','共に'],　
+            'tokenCheck':['副詞','一般','^共に$'],　
             'source':'JTF-2.2.1'
         },
         {
@@ -437,19 +437,19 @@ function validateSentence(sentence) {
         {
             'expected':'ほか',
             'pattern':['他'],
-            'tokenCheck':['名詞','一般','他'],　// 他を探す
+            'tokenCheck':['名詞','一般','^他$'],　// 他を探す
             'source':'JTF-2.2.1'
         },
         {
             'expected':'ほか',
-            'tokenCheck':['名詞','非自立','他'],　// この他に必要なもの
+            'tokenCheck':['名詞','非自立','^他$'],　// この他に必要なもの
             'pattern':['他'],
             'source':'JTF-2.2.1'
         },
         {
             'expected':'ほか',
             'pattern':['外'],
-            'tokenCheck':['名詞','副詞可能','外'],　// 思いの外
+            'tokenCheck':['名詞','副詞可能','^外$'],　// 思いの外
             'source':'JTF-2.2.1'
         },
         {
@@ -493,7 +493,7 @@ function validateSentence(sentence) {
         {
             'expected':'わたし',
             'pattern':['私'],
-            'tokenCheck':['名詞','代名詞','私'],　
+            'tokenCheck':['名詞','代名詞','^私$'],　
             'source':'JTF-2.2.1'
         },
         {
