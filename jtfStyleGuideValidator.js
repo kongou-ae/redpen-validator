@@ -32,8 +32,8 @@ function validateSentence(sentence) {
             'tokenCheck':['副詞','一般','却って'],
             'source':'JTF-2.2.1'
         },
-        {   'expected':'且つ',
-            'pattern':['かつ'],
+        {   'expected':'かつ',
+            'pattern':['且つ'],
             'source':'JTF-2.2.1'
         },
         {   'expected':'かも知れない',
@@ -248,8 +248,8 @@ function validateSentence(sentence) {
         },
         // JTF-2.2.1 漢字を使い分ける
         {
-            'expected':'個所',
-            'pattern':['箇所'],
+            'expected':'箇所',
+            'pattern':['個所'],
             'source':'JTF-2.2.1'
         },
         {
@@ -278,7 +278,7 @@ function validateSentence(sentence) {
         {
             'expected':'および',
             'pattern':['及び'],
-            'tokenCheck':['接続詞','*','および'],
+            'tokenCheck':['接続詞','*','及び'],
             'source':'JTF-2.2.1'
         },
         {
