@@ -509,16 +509,27 @@ function validateSentence(sentence) {
             'source':'JTF-2.2.1'
         },
         // JTF-2.2.2. 算用数字と漢数字の使い分け()(算用数字を使う)
+        // 基本的に数を示す数字は算用数字に。
         {
             'expected':'1',
             'pattern':['一'],
             'tokenCheck':['名詞','数','[一二三四五六七八九十百千]'],　
             'source':'JTF-2.2.2'
         },
+        // ただし、漢数字が望ましいものは個別に算用数字をエラーとする。
         {
-            'expected':'1つ',
-            'pattern':['一つ'],
-            'tokenCheck':['名詞','一般','[一二三四五六七八九]つ'],　
+            'expected':'[一-九]つ',
+            'pattern':['[1-9]つ'],
+            'source':'JTF-2.2.2'
+        },
+        {
+            'expected':'[一-九]次',
+            'pattern':['[1-9]次'],
+            'source':'JTF-2.2.2'
+        },
+        {
+            'expected':'五大陸',
+            'pattern':['5大陸'],
             'source':'JTF-2.2.2'
         },
         // JTF-2.2.3. 一部の助数詞の表記
@@ -545,12 +556,12 @@ function validateSentence(sentence) {
                      sentence.tokens[k].tags[1] == terms[i]['tokenCheck'][1] &&　
                      sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2]))
                    ){
-                    // 正規表現で引っかかってしまったものの中から、漢数字が正しい表現を除外する
+                    // 漢数字は算用数字であるべしの正規表現に引っかかってしまったものの中から、漢数字が正しい表現を除外する
                     if ( (k > 0 && sentence.tokens[k - 1].tags[6] == '数') ||
-                         (k < sentence.tokens.length - 2 && sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2])) && sentence.tokens[k+1].tags[6]=='次' && sentence.tokens[k+2].tags[6]=='関数') ||
+                        　(k < sentence.tokens.length - 1 && sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2])) && sentence.tokens[k+1].tags[6]=='次')　||　
                          (k < sentence.tokens.length - 1 && sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2])) && sentence.tokens[k+1].tags[6]=='大陸')){
                     } else {
-                        addError('【文書規約違反：' + terms[i]['source'] + '】　「' + sentence.tokens[k].surface + '」を修正してください。数量を表現し、数を数えられるものは算用数字を使用します。（正：' + terms[i]['expected'] + '　誤：' + terms[i]['pattern'][j] + '）' , sentence);
+                        addError('【文書規約違反：' + terms[i]['source'] + '】　「' + sentence.tokens[k].surface + '」を修正してください。（正：' + terms[i]['expected'] + '　誤：' + terms[i]['pattern'][j] + '）' , sentence);
                     }
                 }
             }
