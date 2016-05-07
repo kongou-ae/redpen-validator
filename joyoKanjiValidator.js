@@ -10,7 +10,7 @@ function validateSentence(sentence) {
     if ( result != null ) {
         for ( var k = 0; k < result.length; k++ ){
             if ( joyoKanji.indexOf(result[k]) == -1 ) {
-                addError('「' + result[k]  + '」は常用漢字ではありません。常用漢字を使ってください', sentence);
+                addError('「' + result[k]  + '」は常用漢字ではありません。常用漢字を利用してください', sentence);
             };
         };
     };

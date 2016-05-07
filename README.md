@@ -14,15 +14,24 @@ Javascript拡張を利用したRedPenのValidatorです。
 - 2.2.2. 算用数字と漢数字の使い分け
 - 2.2.3. 一部の助数詞の表記
 
+## joyoKanjiValidator.js
 
+常用漢字（2136字）を利用しているかどうかを検査します。
+
+#### 常用漢字ではない漢字を利用した場合のエラー通知
+
+```
+tmp.md:37: ValidationError[JavaScript], [joyoKanjiValidator.js] 「挽」は常用漢字ではありません。常用漢字を利用してください at line: 挽き肉を食べる夢が叶う
+tmp.md:37: ValidationError[JavaScript], [joyoKanjiValidator.js] 「叶」は常用漢字ではありません。常用漢字を利用してください at line: 挽き肉を食べる夢が叶う
+```
 
 ## termsValidator.js
 
-jtfStyleGuideValidator.jsの元ネタとなっているValidatorです。`terms`配列に登録されている表記の規則を利用して、文章に規則から外れた「ゆらぎ」が含まれているかを精査します。精査方法は正規表現と形態素解析の二つをサポートしています。
+jtfStyleGuideValidator.jsの元ネタとなっているValidatorです。`terms`配列に登録されている表記の規則を利用して、文章に規則から外れた「ゆらぎ」が含まれているかを検査します。検査方法は正規表現と形態素解析の二つをサポートしています。
 
-### 正規表現による精査
+### 正規表現による検査
 
-正規表現による精査を行う場合、Terms配列には以下のプロパティを持ったオブジェクトを登録してください。
+正規表現による検査を行う場合、Terms配列には以下のプロパティを持ったオブジェクトを登録してください。
 
 |項目     |型     |登録内容|
 |--------|--------|-------|
@@ -30,7 +39,7 @@ jtfStyleGuideValidator.jsの元ネタとなっているValidatorです。`terms`
 |pattern　|Array　　|ゆらいでいる表記|
 |source　 |String  |規約の原典|
 
-#### 正規表現による精査を行う場合の登録例
+#### 正規表現による検査を行う場合の登録例
 
 ```javascript
 {
@@ -40,7 +49,7 @@ jtfStyleGuideValidator.jsの元ネタとなっているValidatorです。`terms`
 }
 ```
 
-#### 正規表現による精査を行った場合のエラー通知
+#### 正規表現による検査を行った場合のエラー通知
 
 ```
 tmp.md:35: ValidationError[JavaScript], [termsValidator.js] 文書規約違反(MyCompany)です。「ファイアーウォール」を「ファイアウォール」に修正してください at line: ファイアーウォール
@@ -49,9 +58,9 @@ tmp.md:39: ValidationError[JavaScript], [termsValidator.js] 文書規約違反(M
 tmp.md:41: ValidationError[JavaScript], [termsValidator.js] 文書規約違反(MyCompany)です。「ファイヤーウオール」を「ファイアウォール」に修正してください at line: ファイヤーウオール
 ```
 
-### 形態素解析による精査
+### 形態素解析による検査
 
-形態素解析による精査を行う場合、Terms配列には以下のプロパティを持ったオブジェクトを登録してください。
+形態素解析による検査を行う場合、Terms配列には以下のプロパティを持ったオブジェクトを登録してください。
 
 |項目        |型     |登録内容|
 |-----------|--------|-------|
@@ -69,7 +78,7 @@ tmp.md:41: ValidationError[JavaScript], [termsValidator.js] 文書規約違反(M
 |tokenCheck[2]  |String   |`Base form`（kuromojiが生成するTokenに含まれるFeatureの7つ目）|
 
 
-#### 形態素解析による精査を行う場合の登録例
+#### 形態素解析による検査を行う場合の登録例
 
 「～すること」が正しく、「～する事」がゆらぎである場合、以下のように登録します。正規表現で「事」を登録してしまうと、「事件」がエラーになってしまいます。ですが、形態素解析を利用すると「事件」は「事件」という単語として処理されるため、「事」のゆらぎとして処理されなくなります。
 
@@ -82,7 +91,7 @@ tmp.md:41: ValidationError[JavaScript], [termsValidator.js] 文書規約違反(M
 }
 ```
 
-また、以下の規約を登録した場合、「出来る」だけでなく「出来ます」もエラーとして検知します。これは「出来ます」を形態素解析することで抽出される単語「出来」について、品詞が「動詞、自立」、原型が「出来る」と判定されるためです。形態素解析による精査の規約を登録する場合は、規約としたい表現を形態素解析し、品詞と原型を確認することをお勧めします。
+また、以下の規約を登録した場合、「出来る」だけでなく「出来ます」もエラーとして検知します。これは「出来ます」を形態素解析することで抽出される単語「出来」について、品詞が「動詞、自立」、原型が「出来る」と判定されるためです。形態素解析による検査の規約を登録する場合は、規約としたい表現を形態素解析し、品詞と原型を確認することをお勧めします。
 
 ```javascript
 {
@@ -93,7 +102,7 @@ tmp.md:41: ValidationError[JavaScript], [termsValidator.js] 文書規約違反(M
 },
 ```
 
-### 形態素解析による精査を行った場合のエラー通知
+### 形態素解析による検査を行った場合のエラー通知
 
 ```
 tmp.md:43: ValidationError[JavaScript], [termsValidator.js] 文書規約違反(JTF-2.2.1)です。「出来」を修正してください。（正：できる　誤：出来る） at line: 出来ます
@@ -101,3 +110,10 @@ tmp.md:47: ValidationError[JavaScript], [termsValidator.js] 文書規約違反(J
 tmp.md:49: ValidationError[JavaScript], [termsValidator.js] 文書規約違反(JTF-2.2.1)です。「達」を修正してください。（正：たち　誤：達） at line: 先生達
 tmp.md:51: ValidationError[JavaScript], [termsValidator.js] 文書規約違反(JTF-2.2.1)です。「又は」を修正してください。（正：または　誤：又は） at line: 又は
 ```
+
+## 謝辞
+
+joyoKanjiValidator.jsの作成にあたっては、以下のサイトを参考にさせていただきました。感謝します。
+
+- [【みんなの知識 ちょっと便利帳】入力した文章・文字が常用漢字かどうかを調べる](http://www.benricho.org/kanji/kyoikukanji/check-jyoyo-kanji.html)
+- [漢字にマッチする JavaScript の正規表現パターン: Days on the Moon](http://nanto.asablo.jp/blog/2015/12/31/7966713)
