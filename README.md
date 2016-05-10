@@ -2,32 +2,19 @@
 
 Javascript拡張を利用したRedPenのValidatorです。
 
-## jtfStyleGuideValidator.js
+## 各ファイルが対応する検査項目
 
-[JTF 日本語標準スタイルガイド
-（翻訳用） ](http://www.jtf.jp/jp/style_guide/pdf/jtf_style_guide.pdf)のスタイルに準拠しているかどうかを精査します。現在対応している項目は以下のとおりです。
-
-- 2.1.2. 漢字
-    - 『実務翻訳で慣用的に用いられる語』は未対応です
-- 2.2.1. ひらがなと漢字の使い分け（一部）
-    - 「複数の表記方法が一般的で、実務文書で頻出する語」はひらがなが正しいとしています
-- 2.2.2. 算用数字と漢数字の使い分け
-- 2.2.3. 一部の助数詞の表記
-
-## joyoKanjiValidator.js
-
-常用漢字（2136字）を利用しているかどうかを検査します。
-
-#### 常用漢字ではない漢字を利用した場合のエラー通知
-
-```
-tmp.md:37: ValidationError[JavaScript], [joyoKanjiValidator.js] 「挽」は常用漢字ではありません。常用漢字を利用してください at line: 挽き肉を食べる夢が叶う
-tmp.md:37: ValidationError[JavaScript], [joyoKanjiValidator.js] 「叶」は常用漢字ではありません。常用漢字を利用してください at line: 挽き肉を食べる夢が叶う
-```
+|ファイル名                    |検査項目                   |参考文献               |
+|----------------------------|--------------------------|-----------------------|
+|use-numeral-properly.js     |算用数字と漢数字の使い分け　　 |JTF 日本語標準スタイルガイド（翻訳用）|
+|ka-is-written-in-hiragana.js|助数詞にともなう「か」の表記    |JTF 日本語標準スタイルガイド（翻訳用）|
+|use-joyo-Kanji.js           |常用漢字を使っているか       |JTF 日本語標準スタイルガイド（翻訳用）|
+|use-hiragana-and-kanji-properly.js |ひらがなと漢字の使い分け|JTF 日本語標準スタイルガイド（翻訳用）|
+|termsValidator.js           |なし                        |なし                             |
 
 ## termsValidator.js
 
-jtfStyleGuideValidator.jsの元ネタとなっているValidatorです。`terms`配列に登録されている表記の規則を利用して、文章に規則から外れた「ゆらぎ」が含まれているかを検査します。検査方法は正規表現と形態素解析の二つをサポートしています。
+自分で表記の規則を登録して利用する拡張です。`terms`配列に登録されている表記の規則を利用して、文章に規則から外れた「ゆらぎ」が含まれているかを検査します。検査方法は正規表現と形態素解析の二つをサポートしています。
 
 ### 正規表現による検査
 
@@ -113,7 +100,7 @@ tmp.md:51: ValidationError[JavaScript], [termsValidator.js] 文書規約違反(J
 
 ## 謝辞
 
-joyoKanjiValidator.jsの作成にあたっては、以下のサイトを参考にさせていただきました。感謝します。
+use-joyo-Kanji.jsの作成にあたっては、以下のサイトを参考にさせていただきました。感謝します。
 
 - [【みんなの知識 ちょっと便利帳】入力した文章・文字が常用漢字かどうかを調べる](http://www.benricho.org/kanji/kyoikukanji/check-jyoyo-kanji.html)
 - [漢字にマッチする JavaScript の正規表現パターン: Days on the Moon](http://nanto.asablo.jp/blog/2015/12/31/7966713)
