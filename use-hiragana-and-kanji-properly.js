@@ -440,7 +440,7 @@ function validateSentence(sentence) {
                 tokenCheck(sentence);
             } else {
                 if ( sentence.content.match(regex) ) {
-                    addError('【文書規約違反：' + terms[i]['source'] + '】　「' + terms[i]['pattern'][j] + '」を「' + terms[i]['expected'] + '」に修正してください', sentence);
+                    addError('「' + terms[i]['pattern'][j] + '」を「' + terms[i]['expected'] + '」に修正してください', sentence);
                 }
             };
         };

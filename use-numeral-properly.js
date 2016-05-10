@@ -56,7 +56,7 @@ function validateSentence(sentence) {
                 tokenCheck(sentence);
             } else {
                 if ( sentence.content.match(regex) ) {
-                    addError('「' + sentence.tokens[j].surface + '」は数字の使い方が間違っています。（誤：' + terms[i]['pattern'][j] + '　正：' + terms[i]['expected'] + '）' , sentence);
+                    addError('「' + terms[i]['pattern'][j] + '」を「' + terms[i]['expected'] + '」に修正してください', sentence);
                 }
             };
         };

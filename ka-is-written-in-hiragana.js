@@ -35,7 +35,7 @@ function validateSentence(sentence) {
                 tokenCheck(sentence);
             } else {
                 if ( sentence.content.match(regex) ) {
-                    addError('「' + sentence.tokens[k].surface + '」を修正してください。（誤：' + terms[i]['pattern'][j] + '正：' + terms[i]['expected'] + '）' , sentence);
+                    addError('「' + terms[i]['pattern'][j] + '」を「' + terms[i]['expected'] + '」に修正してください', sentence);
                 }
             };
         };
