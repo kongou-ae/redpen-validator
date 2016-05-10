@@ -10,6 +10,7 @@ Javascript拡張を利用したRedPenのValidatorです。
 |ka-is-written-in-hiragana.js|助数詞にともなう「か」の表記    |JTF 日本語標準スタイルガイド（翻訳用）|
 |use-joyo-Kanji.js           |常用漢字を使っているか       |JTF 日本語標準スタイルガイド（翻訳用）|
 |use-hiragana-and-kanji-properly.js |ひらがなと漢字の使い分け|JTF 日本語標準スタイルガイド（翻訳用）|
+|numeral-must-be-hankaku.js  |半角の算用数字を使っているか  |JTF 日本語標準スタイルガイド（翻訳用）|
 |termsValidator.js           |なし                        |なし                             |
 
 ## termsValidator.js
