@@ -1,0 +1,26 @@
+function validateSentence(sentence) {
+    // 参考
+    // https://www.jtf.jp/jp/style_guide/pdf/jtf_style_guide.pdf
+    // 2.1.5. カタカナ
+    // カタカナは「全角」で表記します。半角カタカナは特殊な用途を除いて、原則として使いません。
+    console = {
+        log:print
+    };
+
+    var terms = [
+        {
+            'expected':'「ァ-ン」',
+            'pattern':['[ｧ-ﾝ]'],
+        }
+    ];
+
+    for ( var i = 0; i < terms.length; i++ ) {
+        for ( var j = 0; j < terms[i]['pattern'].length; j++ ) {
+            var regex = new RegExp( terms[i]['pattern'][j], 'g');
+            // 形態素解析するかどうか
+            if ( sentence.content.match(regex) ) {
+                addError('半角のカタカナが含まれています。全角に修正してください', sentence);
+            };
+        };
+    };
+};
