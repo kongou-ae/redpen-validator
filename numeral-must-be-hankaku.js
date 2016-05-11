@@ -9,18 +9,14 @@ function validateSentence(sentence) {
 
     var terms = [
         {
-            'expected':'「0123456789」',
+            'expected':'[0123456789]',
             'pattern':['[０１２３４５６７８９]'],
         }
     ];
 
-    for ( var i = 0; i < terms.length; i++ ) {
-        for ( var j = 0; j < terms[i]['pattern'].length; j++ ) {
-            var regex = new RegExp( terms[i]['pattern'][j], 'g');
-            // 形態素解析するかどうか
-            if ( sentence.content.match(regex) ) {
-                addError('全角の算用数字が含まれています。半角に修正してください', sentence);
-            };
-        };
+    var regex = new RegExp( terms[0]['pattern'], 'g');
+    // 形態素解析するかどうか
+    if ( sentence.content.match(regex) ) {
+        addError('全角の算用数字が含まれています。半角に修正してください', sentence);
     };
 };
