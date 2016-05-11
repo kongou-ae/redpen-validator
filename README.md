@@ -13,6 +13,7 @@ Javascript拡張を利用したRedPenのValidatorです。
 |numeral-must-be-hankaku.js  |半角の算用数字を使っているか  |JTF 日本語標準スタイルガイド（翻訳用）|
 |termsValidator.js           |なし                        |なし                             |
 
+
 ## termsValidator.js
 
 自分で表記の規則を登録して利用する拡張です。`terms`配列に登録されている表記の規則を利用して、文章に規則から外れた「ゆらぎ」が含まれているかを検査します。検査方法は正規表現と形態素解析の二つをサポートしています。
