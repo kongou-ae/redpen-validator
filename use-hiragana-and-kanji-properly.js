@@ -46,7 +46,7 @@ function validateSentence(sentence) {
             'pattern':['御'],
             'tokenCheck':['接頭詞','名詞接続','御'],
         },
-        {   'expected':'子供',
+        {   'expected':'子ども',
             'pattern':['こども','子供'],
         },
         {
@@ -426,8 +426,8 @@ function validateSentence(sentence) {
             // 2.2.1
             if ( sentence.tokens[k].tags[0] == terms[i]['tokenCheck'][0] &&
                  sentence.tokens[k].tags[1] == terms[i]['tokenCheck'][1] &&　
-                 sentence.tokens[k].tags[6] == terms[i]['tokenCheck'][2] ){
-                addError('　「' + sentence.tokens[k].surface + '」は、ひらがなで書くべきです。（誤：' + terms[i]['pattern'] + '　正：' + terms[i]['expected'][j] + '）' , sentence);
+                 sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2])) ){
+                addError('　「' + sentence.tokens[k].surface + '」を「' + terms[i]['expected'] + '」に修正してください' , sentence);
             };
         };
     };
