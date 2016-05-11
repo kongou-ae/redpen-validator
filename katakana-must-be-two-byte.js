@@ -9,18 +9,14 @@ function validateSentence(sentence) {
 
     var terms = [
         {
-            'expected':'「ァ-ン」',
+            'expected':'[ァ-ン]',
             'pattern':['[ｧ-ﾝ]'],
         }
     ];
 
-    for ( var i = 0; i < terms.length; i++ ) {
-        for ( var j = 0; j < terms[i]['pattern'].length; j++ ) {
-            var regex = new RegExp( terms[i]['pattern'][j], 'g');
-            // 形態素解析するかどうか
-            if ( sentence.content.match(regex) ) {
-                addError('半角のカタカナが含まれています。全角に修正してください', sentence);
-            };
-        };
+    var regex = new RegExp( terms[0]['pattern'], 'g');
+    // 形態素解析するかどうか
+    if ( sentence.content.match(regex) ) {
+        addError('半角のカタカナが含まれています。全角に修正してください', sentence);
     };
 };

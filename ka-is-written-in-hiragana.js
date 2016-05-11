@@ -9,8 +9,8 @@ function validateSentence(sentence) {
 
     var terms = [
         {
-            'expected':'「か」',
-            'pattern':['「ヵ」、「カ」、「ヶ」、「ケ」、「箇」、「個」'],
+            'expected':'か',
+            'pattern':['ヵ、カ、ヶ、ケ、箇、個'],
             'tokenCheck':['名詞','接尾','[ヵカヶケ箇個][月所国年]']
         }
     ];
