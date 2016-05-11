@@ -12,6 +12,7 @@ Javascript拡張を利用したRedPenのValidatorです。
 |use-hiragana-and-kanji-properly.js |ひらがなと漢字の使い分け|JTF 日本語標準スタイルガイド（翻訳用）|
 |numeral-must-be-hankaku.js  |半角の算用数字を使っているか  |JTF 日本語標準スタイルガイド（翻訳用）|
 |katakana-must-be-two-byte.js|全角のカタカナを使っているか   |JTF 日本語標準スタイルガイド（翻訳用）|
+|alphabet-must-be-one-byte.js|半角のアルファベットを使っているか |JTF 日本語標準スタイルガイド（翻訳用）|
 |termsValidator.js           |なし                        |なし                             |
 
 
