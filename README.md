@@ -6,14 +6,14 @@ Javascript拡張を利用したRedPenのValidatorです。
 
 |ファイル名                    |検査項目                   |参考文献               |
 |----------------------------|--------------------------|-----------------------|
-|use-numeral-properly.js     |算用数字と漢数字の使い分け　　 |JTF 日本語標準スタイルガイド（翻訳用）|
-|ka-is-written-in-hiragana.js|助数詞にともなう「か」の表記    |JTF 日本語標準スタイルガイド（翻訳用）|
-|use-joyo-Kanji.js           |常用漢字を使っているか       |JTF 日本語標準スタイルガイド（翻訳用）|
-|use-hiragana-and-kanji-properly.js |ひらがなと漢字の使い分け|JTF 日本語標準スタイルガイド（翻訳用）|
-|numeral-must-be-hankaku.js  |半角の算用数字を使っているか  |JTF 日本語標準スタイルガイド（翻訳用）|
-|katakana-must-be-two-byte.js|全角のカタカナを使っているか   |JTF 日本語標準スタイルガイド（翻訳用）|
-|alphabet-must-be-one-byte.js|半角のアルファベットを使っているか |JTF 日本語標準スタイルガイド（翻訳用）|
-|kuten.js                    |。の位置が適切か              |JTF 日本語標準スタイルガイド（翻訳用）|
+|use-joyo-Kanji.js           |常用漢字を使っているか       |JTF 日本語標準スタイルガイド（翻訳用） 2.1.2|
+|katakana-must-be-two-byte.js|全角のカタカナを使っているか   |JTF 日本語標準スタイルガイド（翻訳用） 2.1.5|
+|numeral-must-be-hankaku.js  |半角の算用数字を使っているか  |JTF 日本語標準スタイルガイド（翻訳用） 2.1.8|
+|alphabet-must-be-one-byte.js|半角のアルファベットを使っているか |JTF 日本語標準スタイルガイド（翻訳用） 2.1.9|
+|use-hiragana-and-kanji-properly.js |ひらがなと漢字の使い分け|JTF 日本語標準スタイルガイド（翻訳用） 2.2.1|
+|use-numeral-properly.js     |算用数字と漢数字の使い分け　　 |JTF 日本語標準スタイルガイド（翻訳用） 2.2.2|
+|ka-is-written-in-hiragana.js|助数詞にともなう「か」の表記    |JTF 日本語標準スタイルガイド（翻訳用） 2.2.3|
+|kuten.js                    |。の位置が適切か              |JTF 日本語標準スタイルガイド（翻訳用） 4.1.1|
 |termsValidator.js           |なし                        |なし                             |
 
 
