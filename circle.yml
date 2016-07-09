@@ -1,4 +1,6 @@
 machine:
+  environment:
+    PATH: /home/ubuntu/redpen-validator/redpen-distribution-1.6.2/bin:$PATH
   timezone: Asia/Tokyo
   java:
     version: oraclejdk8
@@ -11,6 +13,6 @@ dependencies:
 
 test:
   post:
-      - mv redpen-validator/alphabet-must-be-one-byte.js redpen-validator/test/alphabet-must-be-one-byte/
-      - cd redpen-validator/test/alphabet-must-be-one-byte/test.js
+      - mv alphabet-must-be-one-byte.js test/alphabet-must-be-one-byte/
+      - cd test/alphabet-must-be-one-byte/
       - node test.js
