@@ -5,7 +5,7 @@ machine:
 
 dependencies:
   pre:
-    - wget https://github.com/redpen-cc/redpen/releases/download/v1.6.2/redpen-1.6.2.tar.gz
+    - wget https://github.com/redpen-cc/redpen/releases/download/redpen-1.6.2/redpen-1.6.2.tar.gz
     - tar xvf redpen-1.6.2.tar.gz
     - rm redpen-1.6.2.tar.gz
 
