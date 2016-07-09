@@ -1,0 +1,16 @@
+machine:
+  timezone: Asia/Tokyo
+  java:
+    version: oraclejdk8
+
+dependencies:
+  pre:
+    - wget https://github.com/redpen-cc/redpen/releases/download/v1.6.2/redpen-1.6.2.tar.gz
+    - tar xvf redpen-1.6.2.tar.gz
+    - rm redpen-1.6.2.tar.gz
+
+test:
+  post:
+      - mv redpen-validator/alphabet-must-be-one-byte.js redpen-validator/test/alphabet-must-be-one-byte/
+      - cd redpen-validator/test/alphabet-must-be-one-byte/test.js
+      - node test.js
