@@ -3,15 +3,16 @@ function validateSentence(sentence) {
     // https://www.jtf.jp/jp/style_guide/pdf/jtf_style_guide.pdf
     // 2.2.3. 一部の助数詞の表記
     // 助数詞にともなう「ヵ」、「か」、「カ」、「ヶ」、「ケ」、「箇」、「個」の表記は、原則として、ひらがなの「か」を使います。
-    console = {
-        log:print
-    };
 
     var terms = [
         {
             'expected':'か',
             'pattern':['ヵ、カ、ヶ、ケ、箇、個'],
             'tokenCheck':['名詞','接尾','[ヵカヶケ箇個][月所国年]']
+        },
+        {
+          'expected':'か月',
+          'pattern':['個月'],
         }
     ];
 
@@ -22,7 +23,7 @@ function validateSentence(sentence) {
                  sentence.tokens[k].tags[1] == terms[i]['tokenCheck'][1] &&　
                  sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2]))
                ){
-                addError('「' + sentence.tokens[k].surface + '」を修正してください。（誤：' + terms[i]['pattern'][j] + '正：' + terms[i]['expected'] + '）' , sentence);
+                addError('「' + sentence.tokens[k].surface + '」を修正してください。助数詞にともなう「ヵかカヶケ箇個」の表記は、原則として、ひらがなの「か」を使います。' , sentence);
             };
         };
     };
@@ -35,7 +36,7 @@ function validateSentence(sentence) {
                 tokenCheck(sentence);
             } else {
                 if ( sentence.content.match(regex) ) {
-                    addError('「' + terms[i]['pattern'][j] + '」を「' + terms[i]['expected'] + '」に修正してください', sentence);
+                    addError('「' + terms[i]['pattern'][j] + '」を「' + terms[i]['expected'] + '」に修正してください。助数詞にともなう「ヵかカヶケ箇個」の表記は、原則として、ひらがなの「か」を使います。', sentence);
                 }
             };
         };

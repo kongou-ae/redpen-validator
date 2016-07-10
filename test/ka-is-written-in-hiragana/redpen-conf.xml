@@ -1,0 +1,7 @@
+<redpen-conf lang="ja">
+    <validators>
+        <validator name="JavaScript" >
+            <property name="script-path" value="../ka-is-written-in-hiragana" />
+        </validator>
+    </validators>
+</redpen-conf>
