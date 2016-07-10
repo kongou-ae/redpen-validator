@@ -1,7 +1,7 @@
 <redpen-conf lang="ja">
     <validators>
         <validator name="JavaScript" >
-            <property name="script-path" value="../alphabet-must-be-one-byte" />
+            <property name="script-path" value="test" />
         </validator>
     </validators>
 </redpen-conf>
