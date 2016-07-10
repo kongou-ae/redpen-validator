@@ -1,6 +1,6 @@
-var expectedResult = 9
+var expectedResult = 55
 var exec = require('child_process').exec;
-exec('redpen -c test/redpen-conf.xml test/doc/kuten.md -r json', function(err, stdout, stderr){
+exec('redpen -c test/redpen-conf.xml test/doc/katakana-must-be-two-byte.md -r json', function(err, stdout, stderr){
   var result = JSON.parse(stdout)
   if (result[0].errors.length  != expectedResult){
     console.log(result[0].errors.length + " error was occured. It is unexpected.")
