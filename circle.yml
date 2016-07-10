@@ -14,5 +14,5 @@ dependencies:
 test:
   post:
       - mv alphabet-must-be-one-byte.js test/
-      - node test/script/alphabet-must-be-one-byte.js.js
+      - node test/script/alphabet-must-be-one-byte.js
       - rm test/alphabet-must-be-one-byte.js
