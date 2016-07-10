@@ -13,11 +13,15 @@ dependencies:
 
 test:
   post:
-      # testing alphabet-must-be-one-byte
+      # testing alphabet-must-be-one-byte.js
       - mv alphabet-must-be-one-byte.js test/
       - node test/script/alphabet-must-be-one-byte.js
       - rm test/alphabet-must-be-one-byte.js
-      # testing alphabet-must-be-one-byte
+      # testing alphabet-must-be-one-byte.js
       - mv ka-is-written-in-hiragana.js test/
       - node test/script/ka-is-written-in-hiragana.js
       - rm test/ka-is-written-in-hiragana.js
+      # testing alphabet-must-be-one-byte.js
+      - mv kuten.js test/
+      - node test/script/kuten.js
+      - rm test/kuten.js
