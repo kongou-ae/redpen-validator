@@ -32,16 +32,15 @@ function validateSection(section){
                 if (section.getListBlock(i).getListElement(j).getSentence(k-1).tokens.length > 1){
                     var secondFromLastToken = section.getListBlock(i).getListElement(j).getSentence(k-1).tokens[section.getListBlock(i).getListElement(j).getSentence(k-1).tokens.length - 2]
                 }
-
                 // ここ、もう少しなんとかならんのか？
+                // 1文字でなければ
                 if (section.getListBlock(i).getListElement(j).getSentence(k-1).tokens.length > 1){
+                    // 名詞または体言止めで、末尾に。がついてしまっている
                     if (secondFromLastToken.tags[0] == "名詞" && lastToken.surface == "。"){
                         section.getListBlock(i).getListElement(j).getSentence(k-1).setContent(tmpListParagraph)
                         var errParagraph = section.getListBlock(i).getListElement(j).getSentence(k-1)
                         addError('箇条書きの体言止めには「。」をつけません', errParagraph);
-                    }
-                } else {
-                    if (lastToken.tags[0] != "名詞"){
+                    }　else if (lastToken.tags[0] != "名詞"){
                         section.getListBlock(i).getListElement(j).getSentence(k-1).setContent(tmpListParagraph)
                         var errParagraph = section.getListBlock(i).getListElement(j).getSentence(k-1)
                         addError('箇条書きの最後には「。」をつけます', errParagraph);

@@ -3,9 +3,6 @@ function validateSentence(sentence) {
     // https://www.jtf.jp/jp/style_guide/pdf/jtf_style_guide.pdf
     // 2.1.8. 算用数字の実装
     // 算用数字は「半角」で表記します。用途によっては全角を許容します。ただし、表記をできるだけ統一するため、特別な理由がない限り半角での表記を原則とします。
-    console = {
-        log:print
-    };
 
     var terms = [
         {

@@ -1,0 +1,31 @@
+machine:
+  environment:
+    PATH: /home/ubuntu/redpen-validator/redpen-distribution-1.6.2/bin:$PATH
+  timezone: Asia/Tokyo
+  java:
+    version: oraclejdk8
+
+dependencies:
+  pre:
+    - wget https://github.com/redpen-cc/redpen/releases/download/redpen-1.6.2/redpen-1.6.2.tar.gz
+    - tar xvf redpen-1.6.2.tar.gz
+    - rm redpen-1.6.2.tar.gz
+
+test:
+  post:
+      # testing alphabet-must-be-one-byte.js
+      - mv alphabet-must-be-one-byte.js test/
+      - node test/script/alphabet-must-be-one-byte.js
+      - rm test/alphabet-must-be-one-byte.js
+      # testing alphabet-must-be-one-byte.js
+      - mv ka-is-written-in-hiragana.js test/
+      - node test/script/ka-is-written-in-hiragana.js
+      - rm test/ka-is-written-in-hiragana.js
+      # testing alphabet-must-be-one-byte.js
+      - mv kuten.js test/
+      - node test/script/kuten.js
+      - rm test/kuten.js
+      # testing katakana-must-be-two-byte.js
+      - mv katakana-must-be-two-byte.js test/
+      - node test/script/katakana-must-be-two-byte.js
+      - rm test/katakana-must-be-two-byte.js
