@@ -29,3 +29,7 @@ test:
       - mv katakana-must-be-two-byte.js test/
       - node test/script/katakana-must-be-two-byte.js
       - rm test/katakana-must-be-two-byte.js
+      # testing use-literary-style.js
+      - mv use-literary-style.js test/
+      - node test/script/use-literary-style.js
+      - rm test/use-literary-style.js
