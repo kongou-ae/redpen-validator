@@ -35,19 +35,14 @@ function validateSection(section){
                     var secondFromLastToken = section.getListBlock(i).getListElement(j).getSentence(k-1).tokens[section.getListBlock(i).getListElement(j).getSentence(k-1).tokens.length - 2]
                 }
 
-                // エラーメッセージ用のパラグラフを作成
-                section.getListBlock(i).getListElement(j).getSentence(k-1).setContent(tmpListParagraph)
-                section.getListBlock(i).getListElement(j).getSentence(k-1).setLineNumber(tmpLineNumber)
-                var errParagraph = section.getListBlock(i).getListElement(j).getSentence(k-1)
-
                 // ここ、もう少しなんとかならんのか？
                 // 1文字でなければ
                 if (section.getListBlock(i).getListElement(j).getSentence(k-1).tokens.length > 1){
                     // 名詞または体言止めで、末尾に。がついてしまっている
                     if (secondFromLastToken.tags[0] == "名詞" && lastToken.surface == "。"){
-                        addError('箇条書きの体言止めには「。」をつけません', errParagraph);
+                        addError('箇条書きの体言止めには「。」をつけません', section.getListBlock(i).getListElement(j).getSentence(k-1));
                     }　else if (lastToken.tags[0] != "名詞"){
-                        addError('箇条書きの最後には「。」をつけます', errParagraph);
+                        addError('箇条書きの最後には「。」をつけます', section.getListBlock(i).getListElement(j).getSentence(k-1));
                     }
                 }
             }
@@ -63,19 +58,14 @@ function validateSection(section){
             tmpLineNumber = section.getParagraph(i).getSentence(j).lineNumber
         }
 
-        // sentenceオブジェクトを宣言する方法がわからないので、強引に既存のオブジェクトを転用する
-        var errParagraph = section.getParagraph(i).appendSentence(tmpParagraph,0)
-        errParagraph = errParagraph.getSentences()[errParagraph.getSentences().length - 1]
-        errParagraph.setLineNumber(tmpLineNumber)
-
         if ( regex1.test(tmpParagraph) == false && regex4.test(tmpParagraph) == false){
-            addError('文末には「。」をつけます', errParagraph);
+            addError('文末には「。」をつけます', section.getParagraph(i).getSentence(j-1));
         }
         if ( regex2.test(tmpParagraph) == true ){
-            addError('閉じかっこの前に「。」はつけません。', errParagraph);
+            addError('閉じかっこの前に「。」はつけません。', section.getParagraph(i).getSentence(j-1));
         }
         if ( regex3.test(tmpParagraph) == true ){
-            addError('丸かっこの前に「。」はつけません。', errParagraph);
+            addError('丸かっこの前に「。」はつけません。', section.getParagraph(i).getSentence(j-1));
         }
     }
 }
