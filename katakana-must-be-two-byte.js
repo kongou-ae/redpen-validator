@@ -14,5 +14,5 @@ function validateSentence(sentence) {
     // 形態素解析するかどうか
     if ( sentence.content.match(regex) ) {
         addError('半角のカタカナが含まれています。全角に修正してください', sentence);
-    };
-};
+    }
+}
