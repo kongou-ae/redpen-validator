@@ -11,11 +11,13 @@ function validateSentence(sentence) {
     var regex6 = new RegExp( /[：；:;]/ );
     var regex7 = new RegExp( /["”'’`‘｛｝{}＜＞]/ );
 
-    // カッコの判定
+    //　1センテンス内に複数のミスがある場合を考慮して、gつきでマッチさせて、複数回エラーを出した方がいい気がする。
+    //　しかし、複数回ミスがある場合に一つだけ修正すると、残ったミスがエラーとして改めて検知される。
+    // したがって、とりあえずこのままとする。使ってみて違和感があったらG方式に変更する
+
     if ( sentence.content.match(regex1) ) {
         addError('丸かっこは全角を使います。', sentence);
     };
-    // ！の判定
     if ( sentence.content.match(regex2) ) {
         addError('感嘆符の利用は避けてください。', sentence);
     };
