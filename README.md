@@ -2,7 +2,7 @@
 
 Javascript拡張を利用したRedPenのValidatorです。
 
-![]](https://circleci.com/gh/kongou-ae/redpen-validator.svg?style=shield&circle-token=%206c4f0d89b0efed4089120942326e94013006d1c2)
+![](https://circleci.com/gh/kongou-ae/redpen-validator.svg?style=shield&circle-token=%206c4f0d89b0efed4089120942326e94013006d1c2)
 
 # 使い方
 
