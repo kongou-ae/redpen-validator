@@ -15,5 +15,5 @@ function validateSentence(sentence) {
     // 形態素解析するかどうか
     if ( sentence.content.match(regex) ) {
         addError('全角のアルファベットが含まれています。半角に修正してください', sentence);
-    };
-};
+    }
+}
