@@ -13,8 +13,23 @@ dependencies:
 
 test:
   post:
+      # testing alphabet-must-be-one-byte.js
+      - mv alphabet-must-be-one-byte.js test/
       - node test/script/alphabet-must-be-one-byte.js
+      - rm test/alphabet-must-be-one-byte.js
+      # testing alphabet-must-be-one-byte.js
+      - mv ka-is-written-in-hiragana.js test/
       - node test/script/ka-is-written-in-hiragana.js
+      - rm test/ka-is-written-in-hiragana.js
+      # testing alphabet-must-be-one-byte.js
+      - mv kuten.js test/
       - node test/script/kuten.js
+      - rm test/kuten.js
+      # testing katakana-must-be-two-byte.js
+      - mv katakana-must-be-two-byte.js test/
       - node test/script/katakana-must-be-two-byte.js
+      - rm test/katakana-must-be-two-byte.js
+      # testing use-literary-style.js
+      - mv use-literary-style.js test/
       - node test/script/use-literary-style.js
+      - rm test/use-literary-style.js
