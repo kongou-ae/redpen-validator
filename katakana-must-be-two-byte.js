@@ -6,7 +6,7 @@ function validateSentence(sentence) {
     var terms = [
         {
             'expected':'[ァ-ンヲ]',
-            'pattern':['[ｧ-ﾝｦ]'],
+            'pattern':['[ｧ-ﾝｦ]']
         }
     ];
 

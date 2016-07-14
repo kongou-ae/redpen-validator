@@ -17,23 +17,23 @@ function validateSentence(sentence) {
 
     if ( sentence.content.match(regex1) ) {
         addError('丸かっこは全角を使います。', sentence);
-    };
+    }
     if ( sentence.content.match(regex2) ) {
         addError('感嘆符の利用は避けてください。', sentence);
-    };
+    }
     if ( sentence.content.match(regex3) ) {
         addError('疑問符の利用は避けてください。', sentence);
-    };
+    }
     if ( sentence.content.match(regex4) ) {
         addError('カタカナ複合語の区切り以外で「・」の利用は避けてください。', sentence);
-    };
+    }
     if ( sentence.content.match(regex5) ) {
         addError('原則として「' + sentence.content.match(regex5) + '」の利用は避けてください。', sentence);
-    };
+    }
     if ( sentence.content.match(regex6) ) {
         addError('原則として「' + sentence.content.match(regex6) + '」の利用は避けてください。もし利用せざるを得ない場合は全角を使います。', sentence);
-    };
+    }
     if ( sentence.content.match(regex7) ) {
         addError('「' + sentence.content.match(regex7) +　'」の利用は避けてください。', sentence);
-    };
-};
+    }
+}
