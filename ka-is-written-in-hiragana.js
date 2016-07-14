@@ -19,14 +19,14 @@ function validateSentence(sentence) {
     var tokenCheck = function (sentence){
         for (var k = 0; k < sentence.tokens.length; k++) {
             if (
-                 sentence.tokens[k].tags[0] == terms[i]['tokenCheck'][0] &&
-                 sentence.tokens[k].tags[1] == terms[i]['tokenCheck'][1] &&　
+                 sentence.tokens[k].tags[0] === terms[i]['tokenCheck'][0] &&
+                 sentence.tokens[k].tags[1] === terms[i]['tokenCheck'][1] &&　
                  sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2]))
                ){
                 addError('「' + sentence.tokens[k].surface + '」を修正してください。助数詞にともなう「ヵかカヶケ箇個」の表記は、原則として、ひらがなの「か」を使います。' , sentence);
-            };
-        };
-    };
+            }
+        }
+    }
 
     for ( var i = 0; i < terms.length; i++ ) {
         for ( var j = 0; j < terms[i]['pattern'].length; j++ ) {
@@ -38,7 +38,7 @@ function validateSentence(sentence) {
                 if ( sentence.content.match(regex) ) {
                     addError('「' + terms[i]['pattern'][j] + '」を「' + terms[i]['expected'] + '」に修正してください。助数詞にともなう「ヵかカヶケ箇個」の表記は、原則として、ひらがなの「か」を使います。', sentence);
                 }
-            };
-        };
-    };
-};
+            }
+        }
+    }
+}

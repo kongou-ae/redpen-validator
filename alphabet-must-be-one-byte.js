@@ -7,7 +7,7 @@ function validateSentence(sentence) {
     var terms = [
         {
             'expected':'[a-zA-Z]',
-            'pattern':['[ａ-ｚＡ-Ｚ]'],
+            'pattern':['[ａ-ｚＡ-Ｚ]']
         }
     ];
 
@@ -15,5 +15,5 @@ function validateSentence(sentence) {
     // 形態素解析するかどうか
     if ( sentence.content.match(regex) ) {
         addError('全角のアルファベットが含まれています。半角に修正してください', sentence);
-    };
-};
+    }
+}

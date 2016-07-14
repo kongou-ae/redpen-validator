@@ -7,7 +7,7 @@ function validateSentence(sentence) {
     var terms = [
         {
             'expected':'[0123456789]',
-            'pattern':['[０１２３４５６７８９]'],
+            'pattern':['[０１２３４５６７８９]']
         }
     ];
 
@@ -15,5 +15,5 @@ function validateSentence(sentence) {
     // 形態素解析するかどうか
     if ( sentence.content.match(regex) ) {
         addError('全角の算用数字が含まれています。半角に修正してください', sentence);
-    };
-};
+    }
+}
