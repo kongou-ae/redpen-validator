@@ -365,8 +365,8 @@ function validateSentence(sentence) {
         },
         {
             'expected':'ほか',
+            'pattern':['他'],
             'tokenCheck':['名詞','非自立','^他$']　// この他に必要なもの
-            'pattern':['他']
         },
         {
             'expected':'ほか',
