@@ -7,7 +7,7 @@ function validateSentence(sentence) {
     var terms = [
         {
             'expected':'[a-zA-Z]',
-            'pattern':['[ａ-ｚＡ-Ｚ]'],
+            'pattern':['[ａ-ｚＡ-Ｚ]']
         }
     ];
 
