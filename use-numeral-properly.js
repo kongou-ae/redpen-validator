@@ -4,28 +4,24 @@ function validateSentence(sentence) {
     // 2.2.2. 算用数字と漢数字の使い分け
     // 数量を表現し、数を数えられるものは算用数字を使用します。任意の数に置き換えても通用する語句がこれに該当します。序数詞（「第～回」「～番目」「～回目」）も算用数字を使います。
 
-    console = {
-        log:print
-    };
-
     var terms = [
         {
             'expected':'1',
             'pattern':['一'],
-            'tokenCheck':['名詞','数','[一二三四五六七八九十百千]'],　
+            'tokenCheck':['名詞','数','[一二三四五六七八九十百千]']
         },
         // ただし、漢数字が望ましいものは個別に算用数字をエラーとする。
         {
             'expected':'[一-九]つ',
-            'pattern':['[1-9]つ'],
+            'pattern':['[1-9]つ']
         },
         {
             'expected':'[一-九]次',
-            'pattern':['[1-9]次'],
+            'pattern':['[1-9]次']
         },
         {
             'expected':'五大陸',
-            'pattern':['5大陸'],
+            'pattern':['5大陸']
         }
     ];
 
@@ -42,10 +38,10 @@ function validateSentence(sentence) {
                      (k < sentence.tokens.length - 1 && sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2])) && sentence.tokens[k+1].tags[6]=='大陸')){
                 } else {
                     addError('「' + sentence.tokens[k].surface + '」は数字の使い方が間違っています。（誤：' + terms[i]['pattern'][j] + '　正：' + terms[i]['expected'] + '）' , sentence );
-                };
-            };
-        };
-    };
+                }
+            }
+        }
+    }
 
 
     for ( var i = 0; i < terms.length; i++ ) {
@@ -58,7 +54,7 @@ function validateSentence(sentence) {
                 if ( sentence.content.match(regex) ) {
                     addError('「' + terms[i]['pattern'][j] + '」を「' + terms[i]['expected'] + '」に修正してください', sentence);
                 }
-            };
-        };
-    };
-};
+            }
+        }
+    }
+}
