@@ -35,7 +35,7 @@ function validateSentence(sentence) {
             'pattern':['かもしれない']
         },
         {
-            'expected':'ください',　
+            'expected':'ください',
             'pattern':['下さい'],
             'tokenCheck':['動詞','非自立','下さる']
         },
@@ -109,7 +109,7 @@ function validateSentence(sentence) {
             'tokenCheck':['接続詞','*','尚']
         },
         {
-            'expected':'なかなか',　//少々精度に不安あり
+            'expected':'なかなか', //少々精度に不安あり
             'pattern':['中々']
         },
         /*いい感じの形態素解析が思いつかないのでパス
@@ -257,7 +257,7 @@ function validateSentence(sentence) {
             'pattern':['したがう'],
             'tokenCheck':['動詞','自立','したがう']
         },
-        /*　これは形態素解析でも無理だと思う。。。
+        /* これは形態素解析でも無理だと思う。。。
         {
             'expected':'出す',
             'pattern':['だす'],
@@ -278,13 +278,13 @@ function validateSentence(sentence) {
         {
             'expected':'つき',
             'pattern':['付き'],
-            'tokenCheck':['名詞','接尾','付き']　//手付きや目付きは一つの名詞になってしまうので検知できない。。。
-            //　好み
+            'tokenCheck':['名詞','接尾','付き'] //手付きや目付きは一つの名詞になってしまうので検知できない。。。
+            // 好み
         },
         {
             'expected':'とおり',
             'pattern':['通り'],
-            'tokenCheck':['名詞','非自立','通り']　//「以下の通り」の通りは「名詞・一般」になってしまう。これを対象にしてしまうと、道路を意味する「通り」が平仮名になってしまう。。。
+            'tokenCheck':['名詞','非自立','通り'] //「以下の通り」の通りは「名詞・一般」になってしまう。これを対象にしてしまうと、道路を意味する「通り」が平仮名になってしまう。。。
         },
         {
             'expected':'通り',
@@ -361,17 +361,17 @@ function validateSentence(sentence) {
         {
             'expected':'ほか',
             'pattern':['他'],
-            'tokenCheck':['名詞','一般','^他$']　// 他を探す
+            'tokenCheck':['名詞','一般','^他$'] // 他を探す
         },
         {
             'expected':'ほか',
             'pattern':['他'],
-            'tokenCheck':['名詞','非自立','^他$']　// この他に必要なもの
+            'tokenCheck':['名詞','非自立','^他$'] // この他に必要なもの
         },
         {
             'expected':'ほか',
             'pattern':['外'],
-            'tokenCheck':['名詞','副詞可能','^外$']　// 思いの外
+            'tokenCheck':['名詞','副詞可能','^外$'] // 思いの外
         },
         {
             'expected':'ほかならぬ',
@@ -425,24 +425,24 @@ function validateSentence(sentence) {
         for (var k = 0; k < sentence.tokens.length; k++) {
             // 2.2.1
             if ( sentence.tokens[k].tags[0] === terms[i]['tokenCheck'][0] &&
-                 sentence.tokens[k].tags[1] === terms[i]['tokenCheck'][1] &&　
+                 sentence.tokens[k].tags[1] === terms[i]['tokenCheck'][1] && 
                  sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2])) ){
-                addError('　「' + sentence.tokens[k].surface + '」を「' + terms[i]['expected'] + '」に修正してください' , sentence);
-            };
-        };
-    };
+                addError(' 「' + sentence.tokens[k].surface + '」を「' + terms[i]['expected'] + '」に修正してください' , sentence);
+            }
+        }
+    }
 
     for ( var i = 0; i < terms.length; i++ ) {
         for ( var j = 0; j < terms[i]['pattern'].length; j++ ) {
             var regex = new RegExp( terms[i]['pattern'][j]);
             // 形態素解析するかどうか
-            if ( 'tokenCheck'　in terms[i] ) {
+            if ( 'tokenCheck' in terms[i] ) {
                 tokenCheck(sentence);
             } else {
                 if ( sentence.content.match(regex) ) {
                     addError('「' + terms[i]['pattern'][j] + '」を「' + terms[i]['expected'] + '」に修正してください', sentence);
                 }
-            };
-        };
-    };
-};
+            }
+        }
+    }
+}
