@@ -12,7 +12,7 @@ function validateSentence(sentence) {
         },
         {
           'expected':'か月',
-          'pattern':['個月'],
+          'pattern':['個月']
         }
     ];
 
