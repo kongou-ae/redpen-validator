@@ -7,7 +7,7 @@ var r = fs.createReadStream('alphabet-must-be-one-byte.js'),
 
 r.pipe(w);
 w.on('close', function(){
-  exec('redpen -c test/redpen-conf.xml test/doc/alphabet-must-be-one-byte.md -r json', function(err, stdout, stderr){
+  exec('redpen -c test/redpen-conf.xml test/doc/alphabet-must-be-one-byte.md -r json -l 100', function(err, stdout, stderr){
     if (err) throw err;
     fs.unlink('test/alphabet-must-be-one-byte.js',function(){
       var result = JSON.parse(stdout)

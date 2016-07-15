@@ -7,8 +7,8 @@ var r = fs.createReadStream('use-literary-style.js'),
 
 r.pipe(w);
 w.on('close', function(){
-  exec('redpen -c test/redpen-conf.xml test/doc/use-literary-style.md -r json', function(err, stdout, stderr){
-    if (err) console.log(err)
+  exec('redpen -c test/redpen-conf.xml test/doc/use-literary-style.md -r json -l 100', function(err, stdout, stderr){
+    if (err) throw err;
     fs.unlink('test/use-literary-style.js',function(){
       var result = JSON.parse(stdout)
       if (result[0].errors.length !== expectedResult){

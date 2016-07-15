@@ -7,7 +7,7 @@ var r = fs.createReadStream('symbol.js'),
 
 r.pipe(w);
 w.on('close', function(){
-  exec('redpen -c test/redpen-conf.xml test/doc/symbol.md -r json', function(err, stdout, stderr){
+  exec('redpen -c test/redpen-conf.xml test/doc/symbol.md -r json -l 100', function(err, stdout, stderr){
     if (err) throw err;
     fs.unlink('test/symbol.js',function(){
       var result = JSON.parse(stdout)

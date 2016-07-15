@@ -7,7 +7,7 @@ var r = fs.createReadStream('kuten.js'),
 
 r.pipe(w);
 w.on('close', function(){
-  exec('redpen -c test/redpen-conf.xml test/doc/kuten.md -r json', function(err, stdout, stderr){
+  exec('redpen -c test/redpen-conf.xml test/doc/kuten.md -r json -l 100', function(err, stdout, stderr){
     if (err) throw err;
     fs.unlink('test/kuten.js',function(){
       var result = JSON.parse(stdout)

@@ -7,7 +7,7 @@ var r = fs.createReadStream('ka-is-written-in-hiragana.js'),
 
 r.pipe(w);
 w.on('close', function(){
-  exec('redpen -c test/redpen-conf.xml test/doc/ka-is-written-in-hiragana.md -r json', function(err, stdout, stderr){
+  exec('redpen -c test/redpen-conf.xml test/doc/ka-is-written-in-hiragana.md -r json -l 100', function(err, stdout, stderr){
     if (err) throw err;
     fs.unlink('test/ka-is-written-in-hiragana.js',function(){
       var result = JSON.parse(stdout)
