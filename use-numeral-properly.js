@@ -28,14 +28,14 @@ function validateSentence(sentence) {
     var tokenCheck = function (sentence){
         for (var k = 0; k < sentence.tokens.length; k++) {
             if (
-                 sentence.tokens[k].tags[0] == terms[i]['tokenCheck'][0] &&
-                 sentence.tokens[k].tags[1] == terms[i]['tokenCheck'][1] &&　
+                 sentence.tokens[k].tags[0] === terms[i]['tokenCheck'][0] &&
+                 sentence.tokens[k].tags[1] === terms[i]['tokenCheck'][1] &&　
                  sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2]))
             ){
                 // 「名詞で数の漢数字は算用数字であるべし」の正規表現に引っかかってしまったものの中から、漢数字が正しい表現を除外する
-                if ( (k > 0 && sentence.tokens[k - 1].tags[6] == '数') ||
-                    　(k < sentence.tokens.length - 1 && sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2])) && sentence.tokens[k+1].tags[6]=='次')　||　
-                     (k < sentence.tokens.length - 1 && sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2])) && sentence.tokens[k+1].tags[6]=='大陸')){
+                if ( (k > 0 && sentence.tokens[k - 1].tags[6] === '数') ||
+                     (k < sentence.tokens.length - 1 && sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2])) && sentence.tokens[k+1].tags[6]==='次') ||
+                     (k < sentence.tokens.length - 1 && sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2])) && sentence.tokens[k+1].tags[6]==='大陸')){
                 } else {
                     addError('「' + sentence.tokens[k].surface + '」は数字の使い方が間違っています。（誤：' + terms[i]['pattern'][j] + '　正：' + terms[i]['expected'] + '）' , sentence );
                 }

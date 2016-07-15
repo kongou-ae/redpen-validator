@@ -10,7 +10,7 @@ function validateSection(section){
     // 見出しをチェックする
     if (section.getHeaderContents() ){
         for (var i = 0; i < section.getHeaderContents().length; i++){
-            if ( regex1.test(section.getHeaderContent(i).content) == true && section.getHeaderContent(i).content != ''){
+            if ( regex1.test(section.getHeaderContent(i).content) === true && section.getHeaderContent(i).content !== ''){
                 addError('見出しに「。」はつけません。', section.getHeaderContent(i));
             }
         }
@@ -39,9 +39,9 @@ function validateSection(section){
                 // 1文字でなければ
                 if (section.getListBlock(i).getListElement(j).getSentence(k-1).tokens.length > 1){
                     // 名詞または体言止めで、末尾に。がついてしまっている
-                    if (secondFromLastToken.tags[0] == "名詞" && lastToken.surface == "。"){
+                    if (secondFromLastToken.tags[0] === "名詞" && lastToken.surface == "。"){
                         addError('箇条書きの体言止めには「。」をつけません', section.getListBlock(i).getListElement(j).getSentence(k-1));
-                    }　else if (lastToken.tags[0] != "名詞"){
+                    }　else if (lastToken.tags[0] !== "名詞"){
                         addError('箇条書きの最後には「。」をつけます', section.getListBlock(i).getListElement(j).getSentence(k-1));
                     }
                 }
@@ -58,13 +58,13 @@ function validateSection(section){
             tmpLineNumber = section.getParagraph(i).getSentence(j).lineNumber
         }
 
-        if ( regex1.test(tmpParagraph) == false && regex4.test(tmpParagraph) == false){
+        if ( regex1.test(tmpParagraph) === false && regex4.test(tmpParagraph) === false){
             addError('文末には「。」をつけます', section.getParagraph(i).getSentence(j-1));
         }
-        if ( regex2.test(tmpParagraph) == true ){
+        if ( regex2.test(tmpParagraph) === true ){
             addError('閉じかっこの前に「。」はつけません。', section.getParagraph(i).getSentence(j-1));
         }
-        if ( regex3.test(tmpParagraph) == true ){
+        if ( regex3.test(tmpParagraph) === true ){
             addError('丸かっこの前に「。」はつけません。', section.getParagraph(i).getSentence(j-1));
         }
     }
