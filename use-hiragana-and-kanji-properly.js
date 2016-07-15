@@ -414,7 +414,7 @@ function validateSentence(sentence) {
         {
             'expected':'わが',
             'pattern':['我が']
-        },
+        }
     ];
 
     var tokenCheck = function (sentence){

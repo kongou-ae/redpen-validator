@@ -1,5 +1,5 @@
 function validateSentence(sentence) {
-    //　使い方はREADMEを参照ください。
+    // 使い方はREADMEを参照ください。
     // https://github.com/kongou-ae/redpen-validator/blob/master/README.md
     /*
     console = {
@@ -7,7 +7,7 @@ function validateSentence(sentence) {
     };
     */
     var terms = [
-        /*　サンプル
+        /* サンプル
         {
             'expected':'ファイアウォール',
             'pattern':['ファイアーウォール','ファイヤーウォール','ファイヤウォール','ファイヤーウオール'],
@@ -44,24 +44,24 @@ function validateSentence(sentence) {
 
     var morphologicalAnalysis = function(sentence){
         for (var k = 0; k < sentence.tokens.length; k++) {
-            if ( sentence.tokens[k].tags[0] == terms[i]['tokenCheck'][0] &&
-                 sentence.tokens[k].tags[1] == terms[i]['tokenCheck'][1] &&　
-                 sentence.tokens[k].tags[6] == terms[i]['tokenCheck'][2] ){
-                addError('文書規約違反(' + terms[i]['source'] + ')です。「' + sentence.tokens[k].surface + '」を修正してください。（正：' + terms[i]['expected'] + '　誤：' + terms[i]['pattern'][j] + '）' , sentence);
+            if ( sentence.tokens[k].tags[0] === terms[i]['tokenCheck'][0] &&
+                 sentence.tokens[k].tags[1] === terms[i]['tokenCheck'][1] && 
+                 sentence.tokens[k].tags[6] === terms[i]['tokenCheck'][2] ){
+                addError('文書規約違反(' + terms[i]['source'] + ')です。「' + sentence.tokens[k].surface + '」を修正してください。（正：' + terms[i]['expected'] + ' 誤：' + terms[i]['pattern'][j] + '）' , sentence);
             }
-        };
+        }
     }
 
     for ( var i = 0; i < terms.length; i++ ) {
         for ( var j = 0; j < terms[i]['pattern'].length; j++ ) {
             var regex = new RegExp( terms[i]['pattern'][j]);
-            if ( 'tokenCheck'　in terms[i] ) {
+            if ( 'tokenCheck' in terms[i] ) {
                 morphologicalAnalysis(sentence);
             } else {
                 if ( sentence.content.match(regex) ) {
                     addError('文書規約違反(' + terms[i]['source'] + ')です。「' + terms[i]['pattern'][j] + '」を「' + terms[i]['expected'] + '」に修正してください', sentence);
                 }
-            };
-        };
-    };
-};
+            }
+        }
+    }
+}

@@ -12,11 +12,11 @@ function validateSentence(sentence) {
     // 文章中に漢字があるかどうかを正規表現で確認する
     var result = sentence.content.match(regex);
     // 漢字が格納されている配列内に、常用漢字があるかをチェックする
-    if ( result != null ) {
+    if ( result !== null ) {
         for ( var k = 0; k < result.length; k++ ){
             if ( joyoKanji.indexOf(result[k]) == -1 ) {
                 addError('「' + result[k]  + '」は常用漢字ではありません。常用漢字を利用してください', sentence);
-            };
-        };
-    };
-};
+            }
+        }
+    }
+}
