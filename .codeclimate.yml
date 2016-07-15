@@ -1,12 +1,12 @@
 engines:
   brakeman:
-    enabled: true
+    enabled: false
   bundler-audit:
-    enabled: true
+    enabled: false
   csslint:
-    enabled: true
+    enabled: false
   coffeelint:
-    enabled: true
+    enabled: false
   duplication:
     enabled: false
     config:
@@ -18,9 +18,9 @@ engines:
   eslint:
     enabled: true
   fixme:
-    enabled: true
+    enabled: false
   rubocop:
-    enabled: true
+    enabled: false
 ratings:
   paths:
   - Gemfile.lock
