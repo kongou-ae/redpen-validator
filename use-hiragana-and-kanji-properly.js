@@ -4,10 +4,6 @@ function validateSentence(sentence) {
     // 2.2.1. ひらがなと漢字の使い分け
     // 漢字は「全角」で表記します。漢字の使用は、平成 22 年 11 月 30 日内閣告示第 2 号の「常用漢字表」に原則として準じます。
 
-    console = {
-        log:print
-    };
-
     var terms = [
         {
             'expected':'あらかじめ',

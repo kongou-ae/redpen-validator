@@ -1,8 +1,6 @@
 function validateSentence(sentence) {
-    //　口語ではなく文語を使う
-    console = {
-        log:print
-    };
+    // 口語ではなく文語を使う
+
     var terms = [
         // http://www.ise.chuo-u.ac.jp/ISE/outline/Gmajor/nihongo/28.html
         {
@@ -44,7 +42,7 @@ function validateSentence(sentence) {
             'pattern':['だったら']
         },
         // 別途検知方法を考える
-        // 文頭のシリーズ　しようがない
+        // 文頭のシリーズ しようがない
         {
             'expected':'のような',
             'pattern':['みたいな']
@@ -104,27 +102,27 @@ function validateSentence(sentence) {
         {
             'expected':'複雑／難しい／困難',
             'pattern':['厄介']
-        },
+        }
     ];
 
     var morphologicalAnalysis = function(sentence){
         for (var k = 0; k < sentence.tokens.length; k++) {
             if ( sentence.tokens[k].tags[0] === terms[i]['tokenCheck'][0] &&
-                 sentence.tokens[k].tags[1] === terms[i]['tokenCheck'][1] &&　
+                 sentence.tokens[k].tags[1] === terms[i]['tokenCheck'][1] &&
                  sentence.tokens[k].tags[6] === terms[i]['tokenCheck'][2] ){
-                addError('「' + terms[i]['pattern'][j]　+'」は口語です。「' + terms[i]['expected'] + '」に修正してください' , sentence);
+                addError('「' + terms[i]['pattern'][j] +'」は口語です。「' + terms[i]['expected'] + '」に修正してください' , sentence);
             }
         }
     }
 
     for ( var i = 0; i < terms.length; i++ ) {
         for ( var j = 0; j < terms[i]['pattern'].length; j++ ) {
-            var regex = new RegExp( terms[i]['pattern'][j]　);
-            if ( 'tokenCheck'　in terms[i] ) {
+            var regex = new RegExp( terms[i]['pattern'][j] );
+            if ( 'tokenCheck' in terms[i] ) {
                 morphologicalAnalysis(sentence);
             } else {
                 if ( sentence.content.match(regex) ) {
-                  addError('「' + terms[i]['pattern'][j]　+'」は口語です。「' + terms[i]['expected'] + '」に修正してください。' , sentence);
+                  addError('「' + terms[i]['pattern'][j] +'」は口語です。「' + terms[i]['expected'] + '」に修正してください。' , sentence);
                 }
             }
         }
