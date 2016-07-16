@@ -10,11 +10,16 @@ function validateSentence(sentence) {
     var regex5 = new RegExp( /[-－]/ );
     var regex6 = new RegExp( /[：；:;]/ );
     var regex7 = new RegExp( /["”'’`‘｛｝{}＜＞]/ );
+    var regexMail = new RegExp(/[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*/);
+    var tmp = ''
+    var mailResult = ''
 
+    console = {
+        log:print
+    };
     //　1センテンス内に複数のミスがある場合を考慮して、gつきでマッチさせて、複数回エラーを出した方がいい気がする。
     //　しかし、複数回ミスがある場合に一つだけ修正すると、残ったミスがエラーとして改めて検知される。
     // したがって、とりあえずこのままとする。使ってみて違和感があったらG方式に変更する
-
     if ( sentence.content.match(regex1) ) {
         addError('丸かっこは全角を使います。', sentence);
     }
@@ -27,9 +32,16 @@ function validateSentence(sentence) {
     if ( sentence.content.match(regex4) ) {
         addError('カタカナ複合語の区切り以外で「・」の利用は避けてください。', sentence);
     }
-    if ( sentence.content.match(regex5) ) {
-        addError('原則として「' + sentence.content.match(regex5) + '」の利用は避けてください。', sentence);
+
+    // Sentenceからメールアドレスを除外する
+    tmp = sentence.content
+    while ( regexMail.test(tmp) === true ){
+        tmp = tmp.replace(regexMail,'')
     }
+    if ( tmp.match(regex5) ){
+        addError('原則として「' + tmp.match(regex5) + '」の利用は避けてください。', sentence);
+    }
+
     if ( sentence.content.match(regex6) ) {
         addError('原則として「' + sentence.content.match(regex6) + '」の利用は避けてください。もし利用せざるを得ない場合は全角を使います。', sentence);
     }
