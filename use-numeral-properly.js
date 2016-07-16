@@ -3,7 +3,7 @@ function validateSentence(sentence) {
     // https://www.jtf.jp/jp/style_guide/pdf/jtf_style_guide.pdf
     // 2.2.2. 算用数字と漢数字の使い分け
     // 数量を表現し、数を数えられるものは算用数字を使用します。任意の数に置き換えても通用する語句がこれに該当します。序数詞（「第～回」「～番目」「～回目」）も算用数字を使います。
-
+    var tmp = ''
     for (var k = 0; k < sentence.tokens.length; k++) {
 
         // --------------------------------------------------------------------------------------------
@@ -22,20 +22,20 @@ function validateSentence(sentence) {
 
         // 4文字にTokenされす3文字にTokenされる四文字熟語を算用数字にしない
         if ( k + 2 < sentence.tokens.length ) {
-            var tmp = sentence.tokens[k].surface + sentence.tokens[k+1].surface + sentence.tokens[k+2].surface;
+            tmp = sentence.tokens[k].surface + sentence.tokens[k+1].surface + sentence.tokens[k+2].surface;
             if ( tmp.match(/[一二三四五六七八九十百千][\u4E00-\u9FFF][一二三四五六七八九十百千][\u4E00-\u9FFF]/) ) return null;
         }
 
         // 4文字にTokenされす2文字にTokenされる四文字熟語を算用数字にしない
         if ( k + 1 < sentence.tokens.length ){
-            var tmp = sentence.tokens[k].surface + sentence.tokens[k+1].surface;
+            tmp = sentence.tokens[k].surface + sentence.tokens[k+1].surface;
             if ( tmp.match(/[一二三四五六七八九十百千][\u4E00-\u9FFF][一二三四五六七八九十百千][\u4E00-\u9FFF]/) ) return null;
         }
 
         // 数[漢数字]が数[算用数字]になってしまうので除外
         if ( k + 1 < sentence.tokens.length ){
             if (
-                sentence.tokens[k].tags[6] == '数' &&
+                sentence.tokens[k].tags[6] === '数' &&
                 sentence.tokens[k+1].tags[6].match(/[十百千万]/)
             ) return null;
         }
