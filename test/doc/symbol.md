@@ -27,3 +27,9 @@
 明日｛つまり7月20日｝は誕生日です。
 
 明日＜つまり7月20日＞は誕生日です。
+
+連絡先はy.matsu-moto.ae@gmail.comとy.matsu-moto.ae2@gmail.comです。
+
+y.matsu-moto.ae@gmail.comとy.matsu-moto.ae2@gmail.com
+
+3-5歳の担当者のメールアドレスはy.matsu-moto.ae@gmail.comとy.matsu-moto.ae2@gmail.comです。
