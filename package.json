@@ -1,0 +1,25 @@
+{
+  "name": "redpen-validator-easy-to-read-japanese-document",
+  "version": "0.0.1",
+  "description": "redpen custom validator for writing a easy-to-read japanese document",
+  "main": "alphabet-must-be-one-byte.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kongou-ae/redpen-validator.git"
+  },
+  "keywords": [
+    "redpen"
+  ],
+  "author": "kongou-ae",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kongou-ae/redpen-validator/issues"
+  },
+  "homepage": "https://github.com/kongou-ae/redpen-validator#readme"
+}
