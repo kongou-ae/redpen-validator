@@ -102,7 +102,31 @@ function validateSentence(sentence) {
         {
             'expected':'複雑／難しい／困難',
             'pattern':['厄介']
+        },
+        // http://www.ipentec.com/document/document.aspx?page=write-thesis-tips
+        {
+            'expected':'別の表現',
+            'pattern':['という'],
+            'tokenCheck':['助詞','格助詞','という']
+        },
+        {
+            'expected':'別の表現',
+            'pattern':['すると']
+        },
+        // http://isabelle.cc.kyushu-u.ac.jp/~amano/how_to_write/japanese.html
+        {
+            'expected':'する必要がある',
+            'pattern':['ないといけない']
+        },
+        {
+            'expected':'したがって/このため/そのため',
+            'pattern':['だから']
+        },
+        {
+            'expected':'したがって/このため/そのため',
+            'pattern':['それで']
         }
+
     ];
 
     var morphologicalAnalysis = function(sentence){
