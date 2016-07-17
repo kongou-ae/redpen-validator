@@ -111,21 +111,21 @@ function validateSentence(sentence) {
         },
         {
             'expected':'別の表現',
-            'pattern':['すると'],
+            'pattern':['すると']
         },
         // http://isabelle.cc.kyushu-u.ac.jp/~amano/how_to_write/japanese.html
         {
             'expected':'する必要がある',
-            'pattern':['ないといけない'],
+            'pattern':['ないといけない']
         },
         {
             'expected':'したがって/このため/そのため',
-            'pattern':['だから'],
+            'pattern':['だから']
         },
         {
             'expected':'したがって/このため/そのため',
-            'pattern':['それで'],
-        },
+            'pattern':['それで']
+        }
 
     ];
 
