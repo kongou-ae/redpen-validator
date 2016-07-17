@@ -33,3 +33,5 @@
 y.matsu-moto.ae@gmail.comとy.matsu-moto.ae2@gmail.com
 
 3-5歳の担当者のメールアドレスはy.matsu-moto.ae@gmail.comとy.matsu-moto.ae2@gmail.comです。
+
+現在の時刻は17:30です。
