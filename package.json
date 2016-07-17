@@ -11,6 +11,7 @@
   },
   "repository": {
     "type": "git",
+    "url": "https://github.com/kongou-ae/redpen-validator.git"
   },
   "keywords": [
     "redpen"
