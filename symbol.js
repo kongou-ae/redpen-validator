@@ -11,6 +11,7 @@ function validateSentence(sentence) {
     var regex6 = new RegExp( /[：；:;]/ );
     var regex7 = new RegExp( /["”'’`‘｛｝{}＜＞]/ );
     var regexMail = new RegExp(/[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*/);
+    var regexTimes = new RegExp(/([01]?[0-9]|2[0-3])[:：]([0-5][0-9])/);
     var tmp = ''
     var mailResult = ''
 
@@ -39,7 +40,12 @@ function validateSentence(sentence) {
         addError('原則として「' + tmp.match(regex5) + '」の利用は避けてください。', sentence);
     }
 
-    if ( sentence.content.match(regex6) ) {
+    // Sentenceから時刻を除外する
+    tmp = sentence.content
+    while ( regexTimes.test(tmp) === true ){
+        tmp = tmp.replace(regexTimes,'')
+    }
+    if ( tmp.match(regex6) ) {
         addError('原則として「' + sentence.content.match(regex6) + '」の利用は避けてください。もし利用せざるを得ない場合は全角を使います。', sentence);
     }
     if ( sentence.content.match(regex7) ) {
