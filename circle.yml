@@ -15,7 +15,6 @@ test:
   post:
       - node test/script/alphabet-must-be-one-byte.js
       - node test/script/ka-is-written-in-hiragana.js
-      - node test/script/kuten.js
       - node test/script/katakana-must-be-two-byte.js
       - node test/script/use-literary-style.js
       - node test/script/symbol.js
