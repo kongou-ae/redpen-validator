@@ -15,8 +15,8 @@ function validateSentence(sentence) {
     var tmp = ''
     var mailResult = ''
 
-    //　1センテンス内に複数のミスがある場合を考慮して、gつきでマッチさせて、複数回エラーを出した方がいい気がする。
-    //　しかし、複数回ミスがある場合に一つだけ修正すると、残ったミスがエラーとして改めて検知される。
+    // 1センテンス内に複数のミスがある場合を考慮して、gつきでマッチさせて、複数回エラーを出した方がいい気がする。
+    // しかし、複数回ミスがある場合に一つだけ修正すると、残ったミスがエラーとして改めて検知される。
     // したがって、とりあえずこのままとする。使ってみて違和感があったらG方式に変更する
     if ( sentence.content.match(regex1) ) {
         addError('丸かっこは全角を使います。', sentence);
@@ -49,6 +49,6 @@ function validateSentence(sentence) {
         addError('原則として「' + sentence.content.match(regex6) + '」の利用は避けてください。もし利用せざるを得ない場合は全角を使います。', sentence);
     }
     if ( sentence.content.match(regex7) ) {
-        addError('「' + sentence.content.match(regex7) +　'」の利用は避けてください。', sentence);
+        addError('「' + sentence.content.match(regex7) + '」の利用は避けてください。', sentence);
     }
 }
