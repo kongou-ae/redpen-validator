@@ -15,7 +15,7 @@ function validateSentence(sentence) {
         {
             'expected':'いつ',
             'pattern':['何時'],
-            'tokenCheck':['名詞','代名詞','何時']
+            'tokenCheck':['名詞','代名詞','何時'] // この形で形態素解析される「何時」がすくない。何と時にTokenizeされる。。。
         },
         {   'expected':'おおよそ',
             'pattern':['凡そ']
@@ -27,8 +27,8 @@ function validateSentence(sentence) {
         {   'expected':'かつ',
             'pattern':['且つ']
         },
-        {   'expected':'かも知れない',
-            'pattern':['かもしれない']
+        {   'expected':'かもしれない',
+            'pattern':['かも知れない']
         },
         {
             'expected':'ください',
@@ -43,7 +43,7 @@ function validateSentence(sentence) {
             'tokenCheck':['接頭詞','名詞接続','御']
         },
         {   'expected':'子ども',
-            'pattern':['こども','子供']
+            'pattern':['こども|子供']
         },
         {
             'expected':'さらに',
@@ -84,7 +84,12 @@ function validateSentence(sentence) {
         {
             'expected':'たち',
             'pattern':['達'],
-            'tokenCheck':['名詞','接尾','達']
+            'tokenCheck':['名詞','接尾','達'] //中々検知しないので、個別に下で定義。。。
+        },
+        {
+            'expected':'人たち',
+            'pattern':['人達'],
+            'tokenCheck':['名詞','一般','人達']
         },
         {
             'expected':'できる',
@@ -137,12 +142,12 @@ function validateSentence(sentence) {
         },
         {
             'expected':'もって',
-            'pattern':['以て','以って']
+            'pattern':['以て|以って']
         },
         {
             'expected':'ように',
             'pattern':['様に'],
-            'tokenCheck':['名詞','非自立','^様$']
+            'tokenCheck':['名詞','非自立','様']
         },
         {
             'expected':'よほど',
@@ -164,7 +169,7 @@ function validateSentence(sentence) {
         {
             'expected':'強いて',
             'pattern':['しいて'],
-            'tokenCheck':['動詞','自立','しいる']
+            'tokenCheck':['副詞','一般','しいて']
         },
         /* いい感じの検知方法が見当たらないのでパス
         {
@@ -184,9 +189,8 @@ function validateSentence(sentence) {
         },
         /* いい感じの検知方法が見当たらないのでパス
         {
-            'expected':'何しろ',
-            'pattern':['なにしろ'],
-            'tokenCheck':['副詞','一般','なにしろ'],
+            'expected':'何も',
+            'pattern':['なにも'],
         },
         */
         {
@@ -241,7 +245,7 @@ function validateSentence(sentence) {
         {
             'expected':'致す',
             'pattern':['いたす'],
-            'tokenCheck':['動詞','自立','致す']
+            'tokenCheck':['動詞','自立','いたす']
         },
         {
             'expected':'したがって',
@@ -262,15 +266,13 @@ function validateSentence(sentence) {
             'expected':'だす',
             'pattern':['出す'],
         },
-        {
-            'expected':'付く',
-            'pattern':['つく'],
-        },
-        {
-            'expected':'付く',
-            'pattern':['つく'],
-        },
         */
+        {
+            'expected':'付く',
+            'pattern':['つく'],
+            'tokenCheck':['動詞','自立','つく']
+        },
+        /* 活気付くや凍り付くが、一つの単語でTokenizeされてしまうため、検知できない。
         {
             'expected':'つき',
             'pattern':['付き'],
@@ -281,6 +283,11 @@ function validateSentence(sentence) {
             'expected':'とおり',
             'pattern':['通り'],
             'tokenCheck':['名詞','非自立','通り'] //「以下の通り」の通りは「名詞・一般」になってしまう。これを対象にしてしまうと、道路を意味する「通り」が平仮名になってしまう。。。
+        },
+        */
+        {
+            'expected':'以下のとおり',
+            'pattern':['以下の通り'] // とりあえずこれは検知したいので個別に。
         },
         {
             'expected':'通り',
@@ -305,7 +312,7 @@ function validateSentence(sentence) {
         {
             'expected':'うえで',
             'pattern':['上で'],
-            'tokenCheck':['名詞','非自立','^上$']
+            'tokenCheck':['名詞','非自立','上']
         },
         {
             'expected':'きわめて',
@@ -326,7 +333,7 @@ function validateSentence(sentence) {
         {
             'expected':'ともに',
             'pattern':['共に'],
-            'tokenCheck':['副詞','一般','^共に$']
+            'tokenCheck':['副詞','一般','共に']
         },
         {
             'expected':'たとえば',
@@ -357,21 +364,25 @@ function validateSentence(sentence) {
         {
             'expected':'ほか',
             'pattern':['他'],
-            'tokenCheck':['名詞','一般','^他$'] // 他を探す
+            'tokenCheck':['名詞','一般','他'] // 他を探す
         },
         {
             'expected':'ほか',
             'pattern':['他'],
-            'tokenCheck':['名詞','非自立','^他$'] // この他に必要なもの
+            'tokenCheck':['名詞','非自立','他'] // この他に必要なもの
         },
         {
             'expected':'ほか',
             'pattern':['外'],
-            'tokenCheck':['名詞','副詞可能','^外$'] // 思いの外
+            'tokenCheck':['名詞','副詞可能','外'] // 思いの外が他でTokenizeされない。。。
+        },
+        {
+            'expected':'思いのほか',
+            'pattern':['思いの外']
         },
         {
             'expected':'ほかならぬ',
-            'pattern':['他ならぬ','外ならぬ']
+            'pattern':['他ならぬ|外ならぬ']
         },
         {
             'expected':'まったく',
@@ -403,7 +414,7 @@ function validateSentence(sentence) {
         {
             'expected':'わたし',
             'pattern':['私'],
-            'tokenCheck':['名詞','代名詞','^私$']
+            'tokenCheck':['名詞','代名詞','私']
         },
         {
             'expected':'われわれ',
@@ -421,7 +432,7 @@ function validateSentence(sentence) {
         for (var k = 0; k < sentence.tokens.length; k++) {
             // 2.2.1
             if ( sentence.tokens[k].tags[0] === terms[i]['tokenCheck'][0] &&
-                 sentence.tokens[k].tags[1] === terms[i]['tokenCheck'][1] && 
+                 sentence.tokens[k].tags[1] === terms[i]['tokenCheck'][1] &&
                  sentence.tokens[k].tags[6].match(new RegExp(terms[i]['tokenCheck'][2])) ){
                 addError(' 「' + sentence.tokens[k].surface + '」を「' + terms[i]['expected'] + '」に修正してください' , sentence);
             }
