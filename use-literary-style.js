@@ -152,7 +152,7 @@ function validateSentence(sentence) {
             'expected':'削除／他の適切な表現',
             'pattern':['しまう'],
             'tokenCheck':['動詞','非自立','しまう']
-        },
+        }
     ];
 
     var morphologicalAnalysis = function(sentence){
