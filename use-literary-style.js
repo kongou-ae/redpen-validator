@@ -17,7 +17,7 @@ function validateSentence(sentence) {
             'tokenCheck':['名詞','副詞可能','あと']
         },
         {
-            'expected':'行う',
+            'expected':'行う/する',
             'pattern':['やる'],
             'tokenCheck':['動詞','自立','やる']
         },
@@ -61,7 +61,7 @@ function validateSentence(sentence) {
         {
             'expected':'適切な言葉',
             'pattern':['すごく'],
-            'tokenCheck':['形容詞','自立','すごく']
+            'tokenCheck':['形容詞','自立','すごい']
         },
         // 別途検知方法を考える
         // したり
@@ -125,8 +125,34 @@ function validateSentence(sentence) {
         {
             'expected':'したがって/このため/そのため',
             'pattern':['それで']
+        },
+        // http://www.ise.chuo-u.ac.jp/ISE/outline/Gmajor/nihongo/50.html
+        {
+            'expected':'済みません／申し訳ございません',
+            'pattern':['すいません']
+        },
+        {
+            'expected':'他の適切な表現',
+            'pattern':['ちなみに']
+        },
+        {
+            'expected':'ています',
+            'pattern':['てます']
+        },
+        {
+            'expected':'ていません',
+            'pattern':['てません']
+        },
+        {
+            'expected':'もの',
+            'pattern':['やつ'],
+            'tokenCheck':['名詞','代名詞','やつ']
+        },
+        {
+            'expected':'削除／他の適切な表現',
+            'pattern':['しまう'],
+            'tokenCheck':['動詞','非自立','しまう']
         }
-
     ];
 
     var morphologicalAnalysis = function(sentence){
