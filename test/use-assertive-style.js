@@ -90,9 +90,10 @@ function validateSentence(sentence) {
 
     var validate = function(sentence){
 
-        for (var i = 0; i < sentence.tokens.length; i++) {
-            for (var j = 0; j < terms.length; j++) {
+        for (var j = 0; j < terms.length; j++) {
+            for (var i = 0; i < sentence.tokens.length; i++) {
 
+                // Tokenizeが不要なものを先に処理
                 if ( !terms[j].hasOwnProperty('tokens') ){
                     var regex = new RegExp( terms[j].target );
                     if ( regex.test(sentence) ) {
