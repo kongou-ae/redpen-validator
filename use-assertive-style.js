@@ -62,6 +62,26 @@ function validateSentence(sentence) {
                     'tags6':'思う'
                 }
             ]
+        },
+        {
+            'target':'かもしれない',
+            'tokens':[
+                {
+                    'tags0':'助詞',
+                    'tags1':'副助詞',
+                    'tags6':'かも'
+                },
+                {
+                    'tags0':'動詞',
+                    'tags1':'自立',
+                    'tags6':'しれる'
+                },
+                {
+                    'tags0':'ない',
+                    'tags1':'*',
+                    'tags6':'ない'
+                }
+            ]
         }
     ];
 
