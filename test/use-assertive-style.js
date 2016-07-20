@@ -82,12 +82,25 @@ function validateSentence(sentence) {
                     'tags6':'ない'
                 }
             ]
+        },
+        {
+            'target':'ではないだろうか',
         }
     ];
 
     var validate = function(sentence){
+
         for (var i = 0; i < sentence.tokens.length; i++) {
             for (var j = 0; j < terms.length; j++) {
+
+                if ( !terms[j].hasOwnProperty('tokens') ){
+                    var regex = new RegExp( terms[j].target );
+                    if ( regex.test(sentence) ) {
+                        return terms[j].target;
+                    } else {
+                        return
+                    }
+                }
 
                 // 2文字のチェック
                 if ( i + 1 < sentence.tokens.length ){
