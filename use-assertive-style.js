@@ -47,6 +47,21 @@ function validateSentence(sentence) {
                     'tags6':'わかる'
                 }
             ]
+        },
+        {
+            'target':'と思う',
+            'tokens':[
+                {
+                    'tags0':'助詞',
+                    'tags1':'格助詞',
+                    'tags6':'と'
+                },
+                {
+                    'tags0':'動詞',
+                    'tags1':'自立',
+                    'tags6':'思う'
+                }
+            ]
         }
     ];
 
