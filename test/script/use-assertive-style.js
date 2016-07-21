@@ -11,7 +11,6 @@ w.on('close', function(){
     if (err) throw err;
     fs.unlink('test/use-assertive-style.js',function(){
       var result = JSON.parse(stdout)
-      console.dir(JSON.stringify(result))
       if (result[0].errors.length !== expectedResult){
         throw new Error(result[0].errors.length + " error was occured. It is unexpected.")
       } else {
