@@ -160,7 +160,7 @@ function validateSentence(sentence) {
         }
 
         if ( error ){
-            addError( '「' + error + '」はあいまいな表現です。断定系で表現してください。' , sentence);
+            addError( '「' + error + '」は断定を避ける表現です。断定系で表現してください。' , sentence);
         }
     }
 }
