@@ -1,5 +1,8 @@
 function validateSentence(sentence) {
 
+    // 参考URL
+    // https://github.com/kongou-ae/redpen-validator/issues/74
+
     var terms = [
         {
             'target':'考えられる',

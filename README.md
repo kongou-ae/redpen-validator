@@ -26,6 +26,7 @@ RedPenのコンフィグファイルに以下を追記します。
 |use-numeral-properly.js     |算用数字と漢数字の使い分け　　 |JTF 日本語標準スタイルガイド（翻訳用） 2.2.2|
 |ka-is-written-in-hiragana.js|助数詞にともなう「か」の表記    |JTF 日本語標準スタイルガイド（翻訳用） 2.2.3|
 |symbol.js                   |記号の使い方が適切か         |JTF 日本語標準スタイルガイド（翻訳用） 4.2 & 4.3|
+|use-assertive-style.js      |断定を避ける表現を使っていないか |use-assertive-style.js内に記載|
 |use-literary-style.js　　　　　　|口語表現が含まれているか      |use-literary-style.js内に記載  |
 |termsValidator.js           |なし                        |なし                             |
 
