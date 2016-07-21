@@ -1,7 +1,5 @@
 function validateSentence(sentence) {
-    console = {
-        log:print
-    };
+
     var terms = [
         {
             'target':'考えられる',
@@ -103,7 +101,7 @@ function validateSentence(sentence) {
                     'tags6':'感じる'
                 }
             ]
-        },
+        }
     ];
 
     var validateRegex = function(sentence,terms){
