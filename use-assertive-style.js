@@ -1,11 +1,9 @@
 function validateSentence(sentence) {
 
-    // 参考URL
-    // https://github.com/kongou-ae/redpen-validator/issues/74
-
     var terms = [
         {
-            'target':'考えられる',
+            'pattern':'考えられる',
+            'message':'断定を避ける表現です。断定系を使ってください。',
             'tokens':[
                 {
                     'tags0':'動詞',
@@ -20,7 +18,8 @@ function validateSentence(sentence) {
             ]
         },
         {
-            'target':'が分かる',
+            'pattern':'が分かる',
+            'message':'断定を避ける表現です。断定系を使ってください。',
             'tokens':[
                 {
                     'tags0':'助詞',
@@ -35,7 +34,8 @@ function validateSentence(sentence) {
             ]
         },
         {
-            'target':'がわかる',
+            'pattern':'がわかる',
+            'message':'断定を避ける表現です。断定系を使ってください。',
             'tokens':[
                 {
                     'tags0':'助詞',
@@ -50,7 +50,8 @@ function validateSentence(sentence) {
             ]
         },
         {
-            'target':'と思う',
+            'pattern':'と思う',
+            'message':'断定を避ける表現です。断定系を使ってください。',
             'tokens':[
                 {
                     'tags0':'助詞',
@@ -65,7 +66,8 @@ function validateSentence(sentence) {
             ]
         },
         {
-            'target':'かもしれない',
+            'pattern':'かもしれない',
+            'message':'断定を避ける表現です。断定系を使ってください。',
             'tokens':[
                 {
                     'tags0':'助詞',
@@ -78,20 +80,23 @@ function validateSentence(sentence) {
                     'tags6':'しれる'
                 },
                 {
-                    'tags0':'ない',
+                    'tags0':'助動詞',
                     'tags1':'*',
                     'tags6':'ない'
                 }
             ]
         },
         {
-            'target':'ではないだろうか'
+            'pattern':'ではないだろうか',
+            'message':'断定を避ける表現です。断定系を使ってください。'
         },
         {
-            'target':'でしょう'
+            'pattern':'でしょう',
+            'message':'断定を避ける表現です。断定系を使ってください。'
         },
         {
-            'target':'と感じる',
+            'pattern':'と感じる',
+            'message':'断定を避ける表現です。断定系を使ってください。',
             'tokens':[
                 {
                     'tags0':'助詞',
@@ -108,44 +113,32 @@ function validateSentence(sentence) {
     ];
 
     var validateRegex = function(sentence,terms){
-        var regex = new RegExp( terms.target );
+        var regex = new RegExp( terms.pattern );
         if ( regex.test(sentence) ) {
-            return terms.target;
+            return 'error';
         }
     }
 
     var validateToken = function(sentence,terms){
-        // Tokenを見ていく
+
+        var result = 0;
         for (var i = 0; i < sentence.tokens.length; i++) {
-            // 2文字のチェック
-            if ( i + 1 < sentence.tokens.length ){
-                if (
-                    sentence.tokens[i].tags[0] === terms.tokens[0].tags0 &&
-                    sentence.tokens[i].tags[1] === terms.tokens[0].tags1 &&
-                    sentence.tokens[i].tags[6] === terms.tokens[0].tags6 &&
-                    sentence.tokens[i+1].tags[0] === terms.tokens[1].tags0 &&
-                    sentence.tokens[i+1].tags[1] === terms.tokens[1].tags1 &&
-                    sentence.tokens[i+1].tags[6] === terms.tokens[1].tags6
-                ){
-                    return terms.target;
+            // 検査できる＝今のＴｏｋｅｎの位置＋検査すべきＴｏｋｅｎの数が検査すべきＴｏｋｅｎの長さよりも小さい
+            if ( i + terms.tokens.length - 1 < sentence.tokens.length ){
+                // 判定用変数を初期化
+                for (var j = 0; j < terms.tokens.length; j++){
+                    if (
+                        sentence.tokens[i+j].tags[0] === terms.tokens[j].tags0 &&
+                        sentence.tokens[i+j].tags[1] === terms.tokens[j].tags1 &&
+                        sentence.tokens[i+j].tags[6] === terms.tokens[j].tags6
+                    ){
+                        result++;
+                    }
                 }
             }
-            // 3文字のチェック
-            if ( i + 2 < sentence.tokens.length ){
-                if (
-                    sentence.tokens[i].tags[0] === terms.tokens[0].tags0 &&
-                    sentence.tokens[i].tags[1] === terms.tokens[0].tags1 &&
-                    sentence.tokens[i].tags[6] === terms.tokens[0].tags6 &&
-                    sentence.tokens[i+1].tags[0] === terms.tokens[1].tags0 &&
-                    sentence.tokens[i+1].tags[1] === terms.tokens[1].tags1 &&
-                    sentence.tokens[i+1].tags[6] === terms.tokens[1].tags6 &&
-                    sentence.tokens[i+2].tags[0] === terms.tokens[2].tags0 &&
-                    sentence.tokens[i+2].tags[1] === terms.tokens[2].tags1 &&
-                    sentence.tokens[i+2].tags[6] === terms.tokens[2].tags6
-                ){
-                    return terms.target;
-                }
-            }
+        }
+        if (result === terms.tokens.length){
+            return 'error';
         }
     }
 
@@ -160,7 +153,7 @@ function validateSentence(sentence) {
         }
 
         if ( error ){
-            addError( '「' + error + '」は断定を避ける表現です。断定系で表現してください。' , sentence);
+            addError( '「' + terms[j].pattern + '」は' + terms[j].message, sentence);
         }
     }
 }
