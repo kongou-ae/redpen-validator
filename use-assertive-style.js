@@ -88,11 +88,11 @@ function validateSentence(sentence) {
         },
         {
             'pattern':'ではないだろうか',
-            'message':'断定を避ける表現です。断定系を使ってください。',
+            'message':'断定を避ける表現です。断定系を使ってください。'
         },
         {
             'pattern':'でしょう',
-            'message':'断定を避ける表現です。断定系を使ってください。',
+            'message':'断定を避ける表現です。断定系を使ってください。'
         },
         {
             'pattern':'と感じる',
@@ -137,7 +137,7 @@ function validateSentence(sentence) {
                 }
             }
         }
-        if (result == terms.tokens.length){
+        if (result === terms.tokens.length){
             return 'error';
         }
     }

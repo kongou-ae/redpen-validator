@@ -50,7 +50,7 @@ function validateSentence(sentence) {
                 }
             }
         }
-        if (result == terms.tokens.length){
+        if (result === terms.tokens.length){
             return 'error';
         }
     }
