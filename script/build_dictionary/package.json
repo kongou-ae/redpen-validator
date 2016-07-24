@@ -1,0 +1,15 @@
+{
+  "name": "build_dictionary",
+  "version": "0.0.1",
+  "description": "",
+  "main": "build-dictionar.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kongou-ae",
+  "license": "MIT",
+  "dependencies": {
+    "argv": "0.0.2",
+    "request": "^2.74.0"
+  }
+}
