@@ -22,3 +22,4 @@ test:
       - node test/script/numeral-must-be-hankaku.js
       - node test/script/use-hiragana-and-kanji-properly.js
       - node test/script/use-assertive-style.js
+      - node test/script/dont-use-kosoado.js
