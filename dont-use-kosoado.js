@@ -1,13 +1,11 @@
 function validateSentence(sentence) {
     // 参考
     // http://jubilee-web.jp/blog/archives/96
-    console = {
-        log:print
-    };
+
     var terms = [
         {
             "pattern": "これ",
-            "message": "何を指しているのかが不明確です。別の表現を検討してください。",
+            "message": "指示語です。指示語を使うと文章が分かりにくくなります。具体的な表現を検討してください。",
             "tokens": [
                 {
                     "tags0": "名詞",
@@ -18,7 +16,7 @@ function validateSentence(sentence) {
         },
         {
             "pattern": "それ",
-            "message": "何を指しているのかが不明確です。別の表現を検討してください。",
+            "message": "指示語です。指示語を使うと文章が分かりにくくなります。具体的な表現を検討してください。",
             "tokens": [
                 {
                     "tags0": "名詞",
@@ -29,7 +27,7 @@ function validateSentence(sentence) {
         },
         {
             "pattern": "あれ",
-            "message": "何を指しているのかが不明確です。別の表現を検討してください。",
+            "message": "指示語です。指示語を使うと文章が分かりにくくなります。具体的な表現を検討してください。",
             "tokens": [
                 {
                     "tags0": "名詞",
@@ -40,7 +38,7 @@ function validateSentence(sentence) {
         },
         {
             "pattern": "どれ",
-            "message": "何を指しているのかが不明確です。別の表現を検討してください。",
+            "message": "指示語です。指示語を使うと文章が分かりにくくなります。具体的な表現を検討してください。",
             "tokens": [
                 {
                     "tags0": "名詞",
@@ -51,7 +49,7 @@ function validateSentence(sentence) {
         },
         {
             "pattern": "この",
-            "message": "何を指しているのかが不明確です。別の表現を検討してください。",
+            "message": "指示語です。指示語を使うと文章が分かりにくくなります。具体的な表現を検討してください。",
             "tokens": [
                 {
                     "tags0": "連体詞",
@@ -62,7 +60,7 @@ function validateSentence(sentence) {
         },
         {
             "pattern": "その",
-            "message": "何を指しているのかが不明確です。別の表現を検討してください。",
+            "message": "指示語です。指示語を使うと文章が分かりにくくなります。具体的な表現を検討してください。",
             "tokens": [
                 {
                     "tags0": "連体詞",
@@ -73,7 +71,7 @@ function validateSentence(sentence) {
         },
         {
             "pattern": "あの",
-            "message": "何を指しているのかが不明確です。別の表現を検討してください。",
+            "message": "指示語です。指示語を使うと文章が分かりにくくなります。具体的な表現を検討してください。",
             "tokens": [
                 {
                     "tags0": "連体詞",
@@ -84,7 +82,7 @@ function validateSentence(sentence) {
         },
         {
             "pattern": "どの",
-            "message": "何を指しているのかが不明確です。別の表現を検討してください。",
+            "message": "指示語です。指示語を使うと文章が分かりにくくなります。具体的な表現を検討してください。",
             "tokens": [
                 {
                     "tags0": "連体詞",
@@ -95,7 +93,7 @@ function validateSentence(sentence) {
         },
         {
             "pattern": "ここ",
-            "message": "何を指しているのかが不明確です。別の表現を検討してください。",
+            "message": "指示語です。指示語を使うと文章が分かりにくくなります。具体的な表現を検討してください。",
             "tokens": [
                 {
                     "tags0": "名詞",
@@ -106,73 +104,73 @@ function validateSentence(sentence) {
         },
         {
             "pattern": "そこ",
-            "message": "何を指しているのかが不明確です。別の表現を検討してください。",
+            "message": "指示語です。指示語を使うと文章が分かりにくくなります。具体的な表現を検討してください。",
             "tokens": [
                 {
                     "tags0": "名詞",
                     "tags1": "代名詞",
                     "tags6": "そこ"
-                },
+                }
             ]
         },
         {
             "pattern": "あそこ",
-            "message": "何を指しているのかが不明確です。別の表現を検討してください。",
+            "message": "指示語です。指示語を使うと文章が分かりにくくなります。具体的な表現を検討してください。",
             "tokens": [
                 {
                     "tags0": "名詞",
                     "tags1": "代名詞",
                     "tags6": "あそこ"
-                },
+                }
             ]
         },
         {
             "pattern": "どこ",
-            "message": "何を指しているのかが不明確です。別の表現を検討してください。",
+            "message": "指示語です。指示語を使うと文章が分かりにくくなります。具体的な表現を検討してください。",
             "tokens": [
                 {
                     "tags0": "名詞",
                     "tags1": "代名詞",
                     "tags6": "どこ"
-                },
+                }
             ]
         },
         {
             "pattern": "こちら",
-            "message": "何を指しているのかが不明確です。別の表現を検討してください。",
+            "message": "指示語です。指示語を使うと文章が分かりにくくなります。具体的な表現を検討してください。",
             "tokens": [
                 {
                     "tags0": "名詞",
                     "tags1": "代名詞",
                     "tags6": "こちら"
-                },
+                }
             ]
         },
         {
             "pattern": "そちら",
-            "message": "何を指しているのかが不明確です。別の表現を検討してください。",
+            "message": "指示語です。指示語を使うと文章が分かりにくくなります。具体的な表現を検討してください。",
             "tokens": [
                 {
                     "tags0": "名詞",
                     "tags1": "代名詞",
                     "tags6": "そちら"
-                },
+                }
             ]
         },
         {
             "pattern": "あちら",
-            "message": "何を指しているのかが不明確です。別の表現を検討してください。",
+            "message": "指示語です。指示語を使うと文章が分かりにくくなります。具体的な表現を検討してください。",
             "tokens": [
                 {
                     "tags0": "名詞",
                     "tags1": "代名詞",
                     "tags6": "あちら"
-                },
+                }
             ]
         },
         {
             "pattern": "どちら",
-            "message": "何を指しているのかが不明確です。別の表現を検討してください。",
+            "message": "指示語です。指示語を使うと文章が分かりにくくなります。具体的な表現を検討してください。",
             "tokens": [
                 {
                     "tags0": "名詞",
@@ -184,37 +182,31 @@ function validateSentence(sentence) {
     ];
 
     var validateToken = function(sentence,terms){
-        // 初めのセンテンスに「こそあど」があったらエラー。位置は問わない。
-        if ( sentence.isFirstSentence() === true ) {
-            for (var i = 0; i < sentence.tokens.length; i++) {
-                if (
-                    sentence.tokens[i].tags[0] === terms.tokens[0].tags0 &&
-                    sentence.tokens[i].tags[1] === terms.tokens[0].tags1 &&
-                    sentence.tokens[i].tags[6] === terms.tokens[0].tags6
-                ) {
-                    return 'error';
-                }
-            }
-        }
 
-        // 2番目以降のセンテンスの先頭以外に「こそあど」があったらエラー。
-        if ( sentence.isFirstSentence() === false ) {
-            for (var i = 0; i < sentence.tokens.length; i++) {
-                if (
-                    sentence.tokens[i].offset !== 0 &&
-                    sentence.tokens[i].tags[0] === terms.tokens[0].tags0 &&
-                    sentence.tokens[i].tags[1] === terms.tokens[0].tags1 &&
-                    sentence.tokens[i].tags[6] === terms.tokens[0].tags6
-                ) {
-                    return 'error';
+        var result = 0;
+        for (var i = 0; i < sentence.tokens.length; i++) {
+            // 検査できる＝今のＴｏｋｅｎの位置＋検査すべきＴｏｋｅｎの数が検査すべきＴｏｋｅｎの長さよりも小さい
+            if ( i + terms.tokens.length - 1 < sentence.tokens.length ){
+                // 判定用変数を初期化
+                for (var j = 0; j < terms.tokens.length; j++){
+                    if (
+                        sentence.tokens[i+j].tags[0] === terms.tokens[j].tags0 &&
+                        sentence.tokens[i+j].tags[1] === terms.tokens[j].tags1 &&
+                        sentence.tokens[i+j].tags[6] === terms.tokens[j].tags6
+                    ){
+                        result++;
+                    }
                 }
             }
         }
-    };
+        if (result === terms.tokens.length){
+            return 'error';
+        }
+    }
 
     var error = ''
-    // 文章の一番初めのセンテンスでなければ
     for (var j = 0; j < terms.length; j++) {
+
         if ( terms[j].hasOwnProperty('tokens') ){
             error = validateToken(sentence,terms[j]);
         }
