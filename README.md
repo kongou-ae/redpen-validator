@@ -28,7 +28,9 @@ RedPenのコンフィグファイルに以下を追記します。
 |symbol.js                   |記号の使い方が適切か         |JTF 日本語標準スタイルガイド（翻訳用） 4.2 & 4.3|
 |use-assertive-style.js      |断定を避ける表現を使っていないか |use-assertive-style.js内に記載|
 |use-literary-style.js　　　　　　|口語表現が含まれているか      |use-literary-style.js内に記載  |
-|custom-pattern.js           |自分で登録した規則が含まれているか　 |なし                             |
+|dont-use-kosoado.js         |「こそあど言葉」を使っているか    |dont-use-kosoado.js内に記載  |
+|custom-pattern.js           |自分で登録した規則が含まれているか　 |なし
+
 
 
 ## custom-pattern.js
