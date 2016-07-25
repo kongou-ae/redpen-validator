@@ -8,7 +8,7 @@ var indentString = '    ';
 var request = require('request');
 var argv = require('argv');
 
-var options = {
+var cliOptions = {
     name: 'document',
     short: 'd',
     type: 'string',
@@ -17,11 +17,11 @@ var options = {
 };
 
 var form = {};
-var args = argv.option(options).run();
+var args = argv.option(cliOptions).run();
 form.document = args.options.document;
 form.lang = 'ja';
 
-var options = {
+var requestOptions = {
     url: respenServerURL + 'rest/document/tokenize',
     method: 'POST',
     headers : {
@@ -36,12 +36,12 @@ var tokenTags = [];
 var tmpDictOjb = {};
 var dictObj = {};
 
-request(options, function (error, response, body)　{
+request(requestOptions, function (error, response, body) {
     if ( error ){
         throw new Error( console.log(error));
     }
 
-    if ( response.statusCode == 200 ) {
+    if ( response.statusCode === 200 ) {
         for (var i = 0; i < body.tokens.length; i++){
             tokenTags = body.tokens[i].match(/tags=\[(.*)\]/)[1].split(',');
             tmpDictOjb = {};
