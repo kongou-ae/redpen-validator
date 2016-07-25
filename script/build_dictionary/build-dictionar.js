@@ -1,7 +1,12 @@
 'use strict'
 
+// RedpenServerのURL
+var respenServerURL = 'http://redpen.herokuapp.com/';
+// 出力で利用するインデント文字
+var indentString = '    ';
+
 var request = require('request');
-var argv = require( 'argv' );
+var argv = require('argv');
 
 var options = {
     name: 'document',
@@ -11,7 +16,8 @@ var options = {
     example: "'script --document=value' or 'script -d value'"
 };
 
-var args = argv.option( options ).run();
+var form = {};
+var args = argv.option(options).run();
 form.document = args.options.document;
 form.lang = 'ja';
 
@@ -23,17 +29,30 @@ var options = {
     },
     json: true,
     form: form
+};
 
-request(options, function (error, response, body) {
+var tokens = [];
+var tokenTags = [];
+var tmpDictOjb = {};
+var dictObj = {};
+
+request(options, function (error, response, body)　{
     if ( error ){
         throw new Error( console.log(error));
     }
 
-    for (var i = 0; i < body.tokens.length; i++){
-        tmpDictOjb.tags0 = tokenTags[0];
-        tmpDictOjb.tags1 = tokenTags[1].replace(/\s/,'');
-        tmpDictOjb.tags6 = tokenTags[6].replace(/\s/,'');
-    }
-    dictObj.patern = form.document;
-    dictObj.tokens = tokens;
+    if ( response.statusCode == 200 ) {
+        for (var i = 0; i < body.tokens.length; i++){
+            tokenTags = body.tokens[i].match(/tags=\[(.*)\]/)[1].split(',');
+            tmpDictOjb = {};
+            tmpDictOjb.tags0 = tokenTags[0];
+            tmpDictOjb.tags1 = tokenTags[1].replace(/\s/,'');
+            tmpDictOjb.tags6 = tokenTags[6].replace(/\s/,'');
+            tokens.push(tmpDictOjb);
 
+        }
+        dictObj.patern = form.document;
+        dictObj.tokens = tokens;
+        console.log(JSON.stringify(dictObj,null,indentString));
+    }
+});
