@@ -55,6 +55,7 @@ function validateSentence(sentence) {
             // 検査できる＝今のＴｏｋｅｎの位置＋検査すべきＴｏｋｅｎの数が検査すべきＴｏｋｅｎの長さよりも小さい
             if ( i + terms.tokens.length - 1 < sentence.tokens.length ){
                 // 判定用変数を初期化
+                result = 0
                 for (var j = 0; j < terms.tokens.length; j++){
                     if (
                         sentence.tokens[i+j].tags[0] === terms.tokens[j].tags0 &&
@@ -64,11 +65,12 @@ function validateSentence(sentence) {
                         result++;
                     }
                 }
+                if (result === terms.tokens.length){
+                    return 'error';
+                }
             }
         }
-        if (result === terms.tokens.length){
-            return 'error';
-        }
+
     }
 
     var error = ''
