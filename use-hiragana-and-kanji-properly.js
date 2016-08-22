@@ -310,11 +310,6 @@ function validateSentence(sentence) {
             'pattern':['余りに']
         },
         {
-            'expected':'うえで',
-            'pattern':['上で'],
-            'tokenCheck':['名詞','非自立','上']
-        },
-        {
             'expected':'きわめて',
             'pattern':['極めて']
         },
