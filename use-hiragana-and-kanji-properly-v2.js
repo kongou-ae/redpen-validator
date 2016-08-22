@@ -1,7 +1,5 @@
 function validateSentence(sentence) {
-  console = {
-      log:print
-  };
+
     var terms = [
         /* // sample
         {
