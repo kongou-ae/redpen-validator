@@ -120,13 +120,16 @@ function validateSentence(sentence) {
     }
 
     var validateToken = function(sentence,terms){
-
         var result = 0;
         for (var i = 0; i < sentence.tokens.length; i++) {
             // 検査できる＝今のＴｏｋｅｎの位置＋検査すべきＴｏｋｅｎの数が検査すべきＴｏｋｅｎの長さよりも小さい
             if ( i + terms.tokens.length - 1 < sentence.tokens.length ){
                 // 判定用変数を初期化
                 for (var j = 0; j < terms.tokens.length; j++){
+                    // 過剰検知は先行でresultを減らすことで対処
+                    if (sentence.tokens[i+j].tags[6] === "わかる" && sentence.tokens[i+j+1].tags[0] === "形容詞"){ result--; }
+                    if (sentence.tokens[i+j].tags[6] === "分かる" && sentence.tokens[i+j+1].tags[0] === "形容詞"){ result--; }
+
                     if (
                         sentence.tokens[i+j].tags[0] === terms.tokens[j].tags0 &&
                         sentence.tokens[i+j].tags[1] === terms.tokens[j].tags1 &&
