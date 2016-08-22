@@ -23,3 +23,4 @@ test:
       - node test/script/use-hiragana-and-kanji-properly.js
       - node test/script/use-assertive-style.js
       - node test/script/dont-use-kosoado.js
+      - node test/script/use-hiragana-and-kanji-properly-v2.js
