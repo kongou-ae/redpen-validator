@@ -37,3 +37,5 @@ y.matsu-moto.ae@gmail.comとy.matsu-moto.ae2@gmail.com
 現在の時刻は17:30です。
 
 03-3227-5744
+
+東京都中央区1-1-1
