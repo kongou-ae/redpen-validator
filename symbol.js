@@ -12,6 +12,8 @@ function validateSentence(sentence) {
     var regex7 = new RegExp( /["”'’`‘｛｝{}＜＞]/ );
     var regexMail = new RegExp(/[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*/);
     var regexTimes = new RegExp(/([01]?[0-9]|2[0-3])[:：]([0-5][0-9])/);
+    var regexTelNum = new RegExp(/\d{2,5}[-(]\d{1,4}[-)]\d{4}/)
+    var regexAddress = new RegExp(/[0-9]{1,3}-[0-9]{1,3}-[0-9]{1,3}/)
     var tmp = ''
     var mailResult = ''
 
@@ -37,7 +39,9 @@ function validateSentence(sentence) {
         tmp = tmp.replace(regexMail,'')
     }
     if ( tmp.match(regex5) ){
-        addError('原則として「' + tmp.match(regex5) + '」の利用は避けてください。', sentence);
+        if ( !tmp.match(regexTelNum) && !tmp.match(regexAddress)){
+            addError('原則として「' + tmp.match(regex5) + '」の利用は避けてください。', sentence);
+        }
     }
 
     // Sentenceから時刻を除外する
