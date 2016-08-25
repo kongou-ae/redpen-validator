@@ -4,7 +4,7 @@ function validateSentence(sentence) {
     // することができる問題
     var terms = [
       {
-          "patern": "することができる",
+          "pattern": "することができる",
           "message": "冗長な表現です。",
           "tokens": [
               {
@@ -30,7 +30,7 @@ function validateSentence(sentence) {
           ]
       },
       {
-          "patern": "することが出来る",
+          "pattern": "することが出来る",
           "message": "冗長な表現です。",
           "tokens": [
               {
@@ -56,7 +56,7 @@ function validateSentence(sentence) {
           ]
       },
       {
-          "patern": "する事ができる",
+          "pattern": "する事ができる",
           "message": "冗長な表現です。",
           "tokens": [
               {
@@ -82,7 +82,7 @@ function validateSentence(sentence) {
           ]
       },
       {
-          "patern": "することが出来る",
+          "pattern": "することが出来る",
           "message": "冗長な表現です。",
           "tokens": [
               {
