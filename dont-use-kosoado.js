@@ -1,9 +1,6 @@
 function validateSentence(sentence) {
     // 参考
     // http://jubilee-web.jp/blog/archives/96
-    console = {
-        log:print
-    };
     var terms = [
         {
             "pattern": "これ",
