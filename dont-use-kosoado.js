@@ -207,16 +207,13 @@ function validateSentence(sentence) {
                 }
             }
         }
-        // こそあどの個数が2個以上だったら
-        if ( count >= 2){
-            return 'error'
-        }
+        return count
     }
 
-    var error = ''
-    error = validateToken(sentence,terms);
+    var count = ''
+    count = validateToken(sentence,terms);
 
-    if ( error ){
+    if ( count >= 2 ){
         addError( "複数のこそあど言葉が使われています。", sentence);
     }
 }
