@@ -1,7 +1,9 @@
 function validateSentence(sentence) {
     // 参考
     // http://jubilee-web.jp/blog/archives/96
-
+    console = {
+        log:print
+    };
     var terms = [
         {
             "pattern": "これ",
@@ -184,36 +186,40 @@ function validateSentence(sentence) {
     var validateToken = function(sentence,terms){
 
         var result = 0;
+        var count = 0;
         for (var i = 0; i < sentence.tokens.length; i++) {
-            // 検査できる＝今のＴｏｋｅｎの位置＋検査すべきＴｏｋｅｎの数が検査すべきＴｏｋｅｎの長さよりも小さい
-            if ( i + terms.tokens.length - 1 < sentence.tokens.length ){
-                // 判定用変数を初期化
-                result = 0
-                for (var j = 0; j < terms.tokens.length; j++){
-                    if (
-                        sentence.tokens[i+j].tags[0] === terms.tokens[j].tags0 &&
-                        sentence.tokens[i+j].tags[1] === terms.tokens[j].tags1 &&
-                        sentence.tokens[i+j].tags[6] === terms.tokens[j].tags6
-                    ){
-                        result++;
+            for (var j = 0; j < terms.length; j++) {
+                // 検査できる＝今のＴｏｋｅｎの位置＋検査すべきＴｏｋｅｎの数が検査すべきＴｏｋｅｎの長さよりも小さい
+                if ( i + terms[j].tokens.length - 1 < sentence.tokens.length ){
+                    // 判定用変数を初期化
+                    // 規則にマッチしているかを一つずつチェック
+                    result = 0
+                    for (var k = 0; k < terms[j].tokens.length; k++){
+                        if (
+                            sentence.tokens[i+k].tags[0] === terms[j].tokens[k].tags0 &&
+                            sentence.tokens[i+k].tags[1] === terms[j].tokens[k].tags1 &&
+                            sentence.tokens[i+k].tags[6] === terms[j].tokens[k].tags6
+                        ){
+                            result++;
+                        }
+                    }
+                    // チェックした結果が規則の個数と一致したら、こそあどとみなす
+                    if (result === terms[j].tokens.length){
+                        count++;
                     }
                 }
-                if (result === terms.tokens.length){
-                    return 'error';
-                }
             }
+        }
+        // こそあどの個数が2個以上だったら
+        if ( count >= 2){
+            return 'error'
         }
     }
 
     var error = ''
-    for (var j = 0; j < terms.length; j++) {
+    error = validateToken(sentence,terms);
 
-        if ( terms[j].hasOwnProperty('tokens') ){
-            error = validateToken(sentence,terms[j]);
-        }
-
-        if ( error ){
-            addError( '「' + terms[j].pattern + '」は' + terms[j].message, sentence);
-        }
+    if ( error ){
+        addError( "複数のこそあど言葉が使われています。", sentence);
     }
 }
