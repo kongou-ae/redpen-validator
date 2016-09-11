@@ -1,6 +1,6 @@
 {
   "name": "redpen-validator-easy-to-read-japanese-document",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "redpen custom validator for writing a easy-to-read japanese document",
   "main": "alphabet-must-be-one-byte.js",
   "directories": {

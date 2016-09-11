@@ -1,4 +1,4 @@
-var expectedResult = 15;
+var expectedResult = 2;
 var exec = require('child_process').exec;
 var fs = require('fs');
 
