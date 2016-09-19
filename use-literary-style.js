@@ -104,11 +104,13 @@ function validateSentence(sentence) {
             'pattern':['厄介']
         },
         // http://www.ipentec.com/document/document.aspx?page=write-thesis-tips
+        /*
         {
             'expected':'別の表現',
             'pattern':['という'],
             'tokenCheck':['助詞','格助詞','という']
         },
+        */
         {
             'expected':'別の表現',
             'pattern':['すると']
